@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 	
     function validatePassword(password) {			//only accept passwords 7 characters or longer and containing a number
-        if (password.value.length >= 7) {
+        if (password.value.length >= 7 && /\d/.test(password.value)) {
             password.classList.remove('is-invalid');
             password.classList.add('is-valid');
 			return true;
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function validateConfirmPassword(password, confirmPassword) {
-        if (confirmPassword.value === password.value && confirmPassword.value.length >= 7) {		//confirm user password by checking if second input is equal to first
+        if (confirmPassword.value === password.value && confirmPassword.value.length >= 7 && /\d/.test(password.value)) {		//confirm user password by checking if second input is equal to first
             confirmPassword.classList.remove('is-invalid');
             confirmPassword.classList.add('is-valid');
 			return true;
@@ -120,3 +120,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+//Make user's password visible if they check box
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordCheckbox = document.getElementById('showPassword');
+	const passwordValue = document.getElementById('password');
+	
+	passwordCheckbox.addEventListener('change', function(){
+		if(this.checked){
+			passwordValue.type = 'text';
+		}
+		
+		else{
+			passwordValue.type = 'password';
+		}
+		
+	});
+    
+});
