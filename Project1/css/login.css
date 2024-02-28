@@ -1,7 +1,7 @@
 /* CSS Document */
 
 #loginMessage {
-    visibility: hidden; /* Hide user login message until */
+    visibility: hidden; /* Hide user login message until submitting form */
 }
 
 
@@ -13,7 +13,7 @@
   }
 
 .main-content-wrapper {
-    flex: 1;
-    /* Additional styling here */
+    flex: 1;		/*Fill available space in login since there is a lot of room*/
+    
   }
 
