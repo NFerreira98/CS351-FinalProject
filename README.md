@@ -1,4 +1,4 @@
-# CS351-Project1
+# CS351-FinalProject
  Static website for the CS351-Project1
 
  # Title: Guard Gear
