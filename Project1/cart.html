@@ -69,7 +69,11 @@
     <!-- Container wrapper -->
 </nav>
 <!-- End Navbar -->
-
+<ul>
+    <% storeOrder.forEach((customer) => {%>
+    <li> name: <%= customer.name %>, email: <%=customer.email %></li>
+    <% }); %>
+</ul>
 
 
 
