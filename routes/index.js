@@ -17,4 +17,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'GuardGear' });
 });
 
+var controllerDatabase = require('../controllers/database')
+router.post("/storeOrder", controllerDatabase.storeOrder);
+
 module.exports = router;
