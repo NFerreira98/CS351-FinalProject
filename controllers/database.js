@@ -7,7 +7,7 @@
 var { uri } = require('./databaseConnection');
 
 //Define some varibles needed for the database Controller functions
-const { MongoClient, ServerApiVersion, FindCursor} = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // SETP 1: Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {

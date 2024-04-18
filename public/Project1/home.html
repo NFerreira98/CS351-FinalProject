@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guard Gear</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+	  
+	 <link rel="icon" type="image/x-icon" href="images/Cesar_Gracie_Academy_Logo.png" >
+	
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+	  
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="home.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;" role="button" aria-expanded="false">
+      <img src="images/Cesar_Gracie_Academy_Logo.png" height="50" width="50" alt="Company Logo" />
+      <h2 style="margin-left: 10px; margin-bottom: 0; margin-right: 40px; font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'">Guard Gear</h2>
+    </a>
+	  <!-- Hamburger button for mobile devices to access navbar -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  		<span class="navbar-toggler-icon"></span>		  
+	  </button>
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="shop.html">Shop All</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role = "button" data-toggle="dropdown" href="#">Categories</a>
+			<div class="dropdown-menu" >			
+                <a class="dropdown-item" href="mensgis.html">Men's Gis</a>
+  				<a class="dropdown-item" href="mensrashguards.html">Men's Rashguards</a>
+				<a class="dropdown-item" href="womensgis.html">Women's Gis</a>
+                <a class="dropdown-item" href="womensrashguards.html">Women's Rashguards</a>
+				<a class="dropdown-item" href="belts.html">Belts</a>
+              </div>
+        </li>	   
+      </ul>    	
+      <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
+       
+        <!-- Right Links -->
+        <li class="nav-item">
+          <a class="nav-link " href="account.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="images/person.svg" alt = "Account" class="img-fluid" height="25" width="25">
+          </a>
+          
+        </li>
+		  
+        <li class="nav-item">
+          <a class="nav-link " href="cart.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="images/cart.svg" alt = "Shopping Cart" class="img-fluid" height="25" width="25">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+	  <!-- End Navbar -->
+	  
+	  
+    <div class="container mt-3" style="max-width: 500px; margin: auto; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'" >
+      <div class="row">
+        <div class="col-12">
+			<h2 class = "text-center mb-3" >Latest Additions</h2>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" >
+				
+              <div class="carousel-item active" >
+                <img src="images/MenBlackGi.webp" alt="First slide" class="d-block w-100 img-thumbnail img-fluid">
+                <div class="carousel-caption d-none d-md-block">
+                  <a href="mensBlackGi.html" class = "text-white"><h5 class = "bg-secondary">Men's Black Gi</h5></a>
+                  
+                </div>
+              </div>
+				
+              <div class="carousel-item">
+                <img class="d-block w-100 img-fluid" src="images/WomanPinkGi.webp" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block" >
+					<a href="womensPinkGi.html" class = "text-white"><h5 class = "bg-secondary">Woman's Pink Gi</h5></a> 
+                  
+                </div>
+				  
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="images/WomanDarkBlueGi.webp" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+					<a href="womensDarkBlueGi.html" class = "text-white"><h5 class = "bg-secondary">Woman's Dark Blue Gi</h5> </a>
+                  
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next " href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+	  <!-- Home Page Main Text-->
+    <div class="container">
+      <h3 class = "text-center">Ready to take your Jiu-jitsu game to the next level?</h3>
+		<h4>Whether you're a fierce competitor or a casual practitioner, we've got the gear to elevate your game</h4>
+    </div>
+    <hr>
+	  
+	  
+	  
+    <h2 class="text-center navbar-light bg-secondary" style = "color: white;">Recommended Products</h2>
+    <hr>
+	  
+	  
+    <section class="py-6 bg-light">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+                    <div class="col mb-5 ">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/MenRedGi.webp" alt="Men's Red Gi" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Men's Dark Red Gi</h5>
+                                    <!-- Product price-->
+                                    $89.99
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="mensRedGi.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/WomanPurpleGi.webp" alt="Women's Purple Gi" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Women's Purple Gi</h5>
+                                    <!-- Product reviews-->
+                                    
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">$70.00</span>
+                                   
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensPurpleGi.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/MenBlueOrangeRashguard.webp" alt="Men's Psychedelic Rashguard" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Men's Blue/Orange Psychedelic Rashguard</h5>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$39.99</span>
+                                    $25.00
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="mensBlueOrangeRashguard.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col mb-5 ">
+                        <div class="card h-100">
+							<!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/WomanBlackRashguard.webp" alt="Women's Pink Mt. Fuji Rashguard" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Women's Pink Mt. Fuji Rashguard</h5>
+                                    <!-- Product price-->
+									<span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$49.99</span>
+                                    $29.99
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensBlackRashguard.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col mb-5 ">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/BlueBelt.webp" alt="Men's Red Gi" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Fuji Blue Belt</h5>
+                                    <!-- Product price-->
+                                    $39.99
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="adultBlueBelt.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col mb-5 ">
+                        <div class="card h-100">
+							<!-- Sale badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="images/WomanWhiteGi.webp" alt="Women's White Gi" />
+							 <hr>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Women's White Gi</h5>
+                                    <span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$79.99</span>
+                                    $49.99
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensWhiteGi.html">Go to Page</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+				
+            </div>
+        </section>
+	  
+	  
+	  
+    <hr>
+    <h2 class="text-center bg-secondary" style="color: white">Rank up Your Gear </h2>
+    <hr>
+	  
+    <div class="container">
+      <h3>Welcome to Guard Gear!</h3>
+  <p>
+    At Guard Gear, we're passionate about providing you with the best selection of gis, rashguards, belts, and a plethora of other gear to enhance your training. Whether you're a beginner just starting out or an experienced enthusiast looking for high-quality gear, we've got something for everyone.
+  </p>
+  <p>
+    Here's what you can expect from us:
+  </p>
+  <ul>
+    <li><strong>Curated Selection:</strong> We carefully select our products to ensure you get the best quality and value. From adult belts to competition-ready gis, our collection is designed to meet your needs and exceed your expectations.</li>
+    <li><strong>Expert Advice:</strong> Our team is made up of experienced BJJ practitioners who understand what you need to excel. Don't hesitate to reach out for personalized recommendations or advice on the best gear for your journey.</li>
+    <li><strong>Community Focus:</strong> Join our community of like-minded individuals! Participate in forums, read our blog for tips and stories, and share your own experiences. We believe in growing together and supporting each other in our pursuits.</li>
+    <li><strong>Exclusive Deals:</strong> Sign up for our newsletter to get exclusive deals, early access to sales, and the latest news directly in your inbox. We promise to give you the best possible bang for you buck!</li>
+  </ul>
+  <p>
+    Ready to explore? Start by browsing our categories or using the search bar to find exactly what you're looking for. Our customer service team is always here to help with any questions you may have. Let's gear up and take your training to the next level together!
+  </p>
+  <p><strong>Guard Gear Team</strong></p>
+    </div>
+	  
+	  
+    <hr>
+    <div class="container text-white bg-secondary p-4">
+  <div class="row">
+    <div class="col-md-8 col-lg-7">
+      <!-- Links for users -->
+      <div class="row">
+        <div class="col text-center">
+          <ul class="list-unstyled">
+            <li><a href="communityPage.html" class="text-white">Community Page</a></li>
+            <li><a href="newsletter.html" class="text-white">Newsletter</a></li>
+            <li><a href="contactUs.html" class="text-white">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-5">
+      <address>
+        <strong>Guard Gear</strong><br>
+        Hayward, CA, 94540<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+      <address>
+        <strong>Nicholas Ferreira</strong><br>
+        <a href="mailto:nferreira@horizon.csueastbay.edu" class="text-white">nferreira@horizon.csueastbay.edu</a>
+      </address>
+    </div>
+  </div>
+</div>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © Ferreira Enterprises. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+  </body>
+</html>
