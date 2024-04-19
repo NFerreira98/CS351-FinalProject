@@ -3,9 +3,9 @@ var router = express.Router();
 
 //########################################
 
-const { getorders } = require('../controllers/database');
+const { getOrderSummary } = require('../controllers/database');
 const path = require("path");
 
-router.get('/', getorders)
+router.get('/', getOrderSummary)
 
 module.exports = router;
