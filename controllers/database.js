@@ -1,19 +1,10 @@
-//import uri from './databaseConnection.js';
-//the databaseConnection.js is inside the same controllers folder and ONLY has one line the connectivity uri
-// to connect your NodeJS code to YOUR MongoDB instance
-// module.exports = { uri: 'mongodb+srv://YOUR_Login:YOUR_Password@cluster0.WHATEVER.mongodb.net/?retryWrites=true&w=majority' };
-
 
 var { uri } = require('./databaseConnection');
 
-//Define some varibles needed for the database Controller functions
+//Define some variables needed for the database Controller functions
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-//connection string, fill it in with YOUR information for your MongoDB deployment
-//const uri = "mongodb+srv://grewe:jority";
-
-
-// SETP 1: Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -22,42 +13,34 @@ const client = new MongoClient(uri, {
     }
 });
 
-/* STEP 2: Controller function to save New customer data to the collection customers. */
-module.exports.saveNewCustomer =  function(req, res, next) {
-
-    //step 2.1 Read in the incomming form data for the customer: name, email
-    //expecting data variable called name --retrieve value using body-parser
+// POST request to storeOrder
+module.exports.storeOrder = function(req, res, next) {
     var body = JSON.stringify(req.body);  //if wanted entire body as JSON
     var params = JSON.stringify(req.params);//if wanted parameters
-    var value_name = req.body.name;  //retrieve the data associated with name
-    var value_email = req.body.email;  //retrieve the data associated with email
+    var valueOrders = req.body.orders;  //retrieve the data associated with orders
+    var valueBilling = req.body.billing;  //retrieve the data associated with billing
+    var valueUsers = req.body.users; //retrieve the data associated with users
+    var valueShipping = req.body.shipping; //retrieve the data associated with shipping
 
+    console.log("NEW Store Order:  " + valueOrders +
+        "  Billing: " + valueBilling +
+        "  Users: " + valueUsers +
+        "  Shipping: " + valueShipping);
 
-    console.log("NEW Customer Data  " + value_name + "  email: " + value_email);
+    //Call the function defined below that will connect to your MongoDB collection and create a new order
+    saveStoreOrderToMongoDB(valueOrders, valueBilling, valueUsers, valueShipping);
 
-    //step 2.2 Call the function defined below that will connect to your MongDB collection and create a new customer
-    saveCustomerToMongoDB(value_name, value_email);
+    //Send a response welcoming the new user
+    res.send(" THANK YOUR FOR YOUR SUBMITTED ORDER ");
+}
 
-    //step 2.3 Send a response welcoming the new user
-    res.send("Welcome,  " + value_name + "</br> We will reach you at: " + value_email);
-
-};
-
-
-/**
- * This is the main function save to your definde MongoClient defined at the top
- * which connects to your database here defined as "shoppingsite" and in it will access
- * the collection "customers" to create a new Customer with the name and email
- * NOTE: no check if the user already exists (with this email) is done BUT, SHOULD BE DONE
- * @param name
- * @param email
- * @returns {Promise<void>}
- */
-async function saveCustomerToMongoDB(name, email) {
+// BASIC baseline for sending storeOrder data to mongoDB
+async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
     try {
 
         //STEP A: Connect the client to the server	(optional starting in v4.7)
         await client.connect();
+
         //STEP B:  Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -68,52 +51,73 @@ async function saveCustomerToMongoDB(name, email) {
         console.log("got shopping site");
         console.log("db0" + db0.toString());
 
-        //STEP D: grab the customers collection
-        var customersCollection =  db0.collection('customers');
-        console.log("collection is "+ customersCollection.collectionName);
-        console.log(" # documents in it " + await customersCollection.countDocuments());
+        //grab the collection ORDERS
+        var shoppingSiteCollection =  db0.collection('orders');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //insert the new ORDER and display in console the new # documents in ORDERS
+        console.log("Insert new order");
+        await shoppingSiteCollection.insertOne({"ORDER": orders});
+        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
 
-        //STEP E: insert the new customer and display in console the new # documents in customers
-        console.log("Insert new customer");
-        await customersCollection.insertOne({"name": name, "email": email });
-        console.log("  # documnents now = " + await customersCollection.countDocuments());
+        //grab the collection BILLING
+        shoppingSiteCollection =  db0.collection('billing');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //insert the new BILLING and display in console the new # documents in BILLING
+        console.log("Insert new billing");
+        await shoppingSiteCollection.insertOne({"BILLING": billing});
+        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
 
+        //grab the collection USERS
+        shoppingSiteCollection =  db0.collection('users');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //insert the new USER and display in console the new # documents in USERS
+        console.log("Insert new user");
+        await shoppingSiteCollection.insertOne({"USER": users});
+        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+
+        //grab the collection SHIPPING
+        shoppingSiteCollection =  db0.collection('shipping');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //insert the new ORDER and display in console the new # documents in ORDERS
+        console.log("Insert new shipping");
+        await shoppingSiteCollection.insertOne({"SHIPPING": shipping});
+        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
 
     } finally {
-    // STEP F: Ensures that the client will close when you finish/error
-    await client.close();
+        //Ensures that the client will close when you finish/error
+        await client.close();
     }
 }
-module.exports.getCustomers = async function(req, res, next) {
-    try {
 
-        //STEP A: Connect the client to the server	(optional starting in v4.7)
+module.exports.getOrderSummary = async function(req, res, next) {
+    try {
         await client.connect();
-        //STEP B:  Send a ping to confirm a successful connection
         await client.db("admin").command({ping: 1});
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
 
-        //STEP C: connect to the database "shoppingsite"
         var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
         console.log("got shopping site");
         console.log("db0" + db0.toString());
 
-        //STEP D: grab the customers collection
-        var customersCollection = db0.collection('customers');
-        console.log("collection is " + customersCollection.collectionName);
-        console.log(" # documents in it " + await customersCollection.countDocuments());
+        // var shoppingSiteCollection = db0.collection('customers');
+        // console.log("collection is " + shoppingSiteCollection.collectionName);
+        // console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //
+        // const customerListCursor = customersCollection.find().limit(10);
+        // const customerList = await customerListCursor.toArray();
+        //
+        // res.render('customerList', {title: 'customerList', customerList});
 
-        const customerlistCursor = customersCollection.find().limit(10);
-        const customerlist = await customerlistCursor.toArray();
-
-        res.render('customerlist', {title: 'customerlist', customerlist});
     } catch (error) {
-        console.error("Error fetching customer data: ", error);
+        console.error("Error fetching customer data:", error);
         res.status(500).send("Error fetching customer data");
     } finally {
-        // STEP F: Ensures that the client will close when you finish/error
         await client.close();
-
     }
+
 }

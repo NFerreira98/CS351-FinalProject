@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %>.   This is a testing page to get and send data to MongoDB.</p>
+
+<b>Below will be used to test ORDERS, BILLING, USERS, and SHIPPING.</b>
+<br/>
+<form action="/storeOrder" method="post">
+
+  ORDERS: <input type="text" name="orders"> </input>
+  <br/>
+  BILLING: <input type="text" name="billing"> </input>
+  <br/>
+  USERS: <input type="text" name="users"> </input>
+  <br/>
+  SHIPPING: <input type="text" name="shipping"> </input>
+  <br/>
+  <input type="submit" value="Go"/>
+</form>
+</body>
+</html>
