@@ -111,7 +111,7 @@ module.exports.getOrderSummary = async function(req, res, next) {
         // const customerListCursor = customersCollection.find().limit(10);
         // const customerList = await customerListCursor.toArray();
         //
-        // res.render('customerList', {title: 'customerList', customerList});
+         res.render('checkOut', {title: "checkOut"});
 
     } catch (error) {
         console.error("Error fetching customer data:", error);

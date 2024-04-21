@@ -1,4 +1,3 @@
-//########################################
 var express = require('express');
 var router = express.Router();
 
@@ -18,8 +17,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'GuardGear' });
 });
 
-var controllerDatabase = require('../controllers/database');   //this will load the controller file below
-router.post("/storeOrder", controllerDatabase.storeOrder); //see controllers/database.js file
-
+var controllerDatabase = require('../controllers/database')
+router.post("/getOrderSummary", controllerDatabase.getOrderSummary);
+router.post("/storeOrder", controllerDatabase.storeOrder);
 
 module.exports = router;

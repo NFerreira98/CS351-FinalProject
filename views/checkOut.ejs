@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Guard Gear</title>
     <!-- Bootstrap -->
-    <link href="/css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
 
@@ -74,76 +75,31 @@
 </nav>
 <!-- End Navbar -->
 
-<h1>Checkout</h1>
-<h2>User Information</h2>
-<p>Name: <%= user.name %></p>
-<p>Email: <%= user.email %></p>
-<% if (user.address) { %>
-    <h2>Shipping Address</h2>
-    <p><%= user.address %></p>
-<% } else { %>
-    <h2>Shipping Address</h2>
-    <p>Please provide your shipping address:</p>
-    <!-- Shipping address form -->
-<% } %>
 
-<h2>Payment Information</h2>
-<!-- Payment information form -->
 
-<h2>Shopping Cart</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Product Name</th>
-        <th>Product ID</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% for (let i = 0; i < cart.length; i++) { %>
-        <tr>
-            <td><%= cart[i].name %></td>
-            <td><%= cart[i].productId %></td>
-            <td><%= cart[i].quantity %></td>
-            <td><%= cart[i].price %></td>
-        </tr>
-    <% } %>
-    </tbody>
-</table>
-<p>Total Cost: <%= totalCost %></p>
 
-<!-- Checkout button -->
-<form action="/checkout" method="post">
-    <!-- Additional checkout information such as billing info -->
-    <button type="submit">Place Order</button>
-</form>
 
-<!-- Mailing List Section -->
-<div class="mailing-list-section mt-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>Join Our Mailing List</h3>
-                <p>Subscribe to our newsletter to stay updated on exclusive deals and updates!</p>
-            </div>
-            <div class="col-md-12 text-center">
-                <form id="mailingListForm">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="mailingListEmail" placeholder="Enter your email">
-                        <small class="form-text text-muted " >We'll never share your email with anyone else.</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="container">
 
-</div>
-<hr>
+
+
+
+
+
+<!-- Home Page Main Text-->
+    <h1> Added to Cart </h1>
+    <hr>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Company Info -->
 <div class="container text-white bg-secondary p-4">
     <div class="row">
         <div class="col-md-8 col-lg-7">
@@ -158,6 +114,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-4 col-lg-5">
             <address>
                 <strong>Guard Gear</strong><br>
@@ -171,6 +128,9 @@
         </div>
     </div>
 </div>
+
+
+
 <footer class="text-center">
     <div class="container">
         <div class="row">
