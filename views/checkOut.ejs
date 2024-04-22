@@ -116,32 +116,56 @@
         }
     </style>
 
+
+
+
 <div class="container">
     <h1>Checkout</h1>
 
+    <!-- Ask if the user is already registered -->
+    <div class="checkout-section">
+        <h2>Are you already a registered user?</h2>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+
     <!-- Display order information -->
-    <h2>Order Information</h2>
-    <p><strong>Order:</strong> <%= orders %></p>
+    <div class="checkout-section" id="orderSection" style="display: none;">
+        <h2>Order Information</h2>
+        <p><strong>Order:</strong> <%= orders %></p>
+    </div>
 
     <!-- Display billing information -->
-    <h2>Billing Information</h2>
-    <p><strong>Billing:</strong> <%= billing %></p>
+    <div class="checkout-section" id="billingSection" style="display: none;">
+        <h2>Billing Information</h2>
+        <p><strong>Billing:</strong> <%= billing %></p>
+    </div>
 
     <!-- Display shipping information -->
-    <h2>Shipping Information</h2>
-    <p><strong>Shipping:</strong> <%= shipping %></p>
+    <div class="checkout-section" id="shippingSection" style="display: none;">
+        <h2>Shipping Information</h2>
+        <p><strong>Shipping:</strong> <%= shipping %></p>
+    </div>
 
     <!-- Display user information -->
-    <h2>User Information</h2>
-    <p><strong>User:</strong> <%= users %></p>
+    <div class="checkout-section" id="userSection" style="display: none;">
+        <h2>User Information</h2>
+        <p><strong>User:</strong> <%= users %></p>
+    </div>
+
+    <script>
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('orderSection').style.display = 'block';
+            document.getElementById('billingSection').style.display = 'block';
+            document.getElementById('shippingSection').style.display = 'block';
+            document.getElementById('userSection').style.display = 'block';
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            window.location.href = "createaccount.html";
+        });
+    </script>
 </div>
-
-
-
-
-
-
-
 
 
 
