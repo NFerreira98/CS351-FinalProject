@@ -77,17 +77,66 @@
 
 
 
-
-
-
-
-
-
-
-
 <!-- Home Page Main Text-->
-    <h1> Added to Cart </h1>
-    <hr>
+
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Center-align all text */
+            background-color: #f3f3f3;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Center the container */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 30px; /* Add some space between sections */
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+
+<div class="container">
+    <h1>Checkout</h1>
+
+    <!-- Display order information -->
+    <h2>Order Information</h2>
+    <p><strong>Order:</strong> <%= orders %></p>
+
+    <!-- Display billing information -->
+    <h2>Billing Information</h2>
+    <p><strong>Billing:</strong> <%= billing %></p>
+
+    <!-- Display shipping information -->
+    <h2>Shipping Information</h2>
+    <p><strong>Shipping:</strong> <%= shipping %></p>
+
+    <!-- Display user information -->
+    <h2>User Information</h2>
+    <p><strong>User:</strong> <%= users %></p>
+</div>
+
+
 
 
 

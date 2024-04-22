@@ -58,7 +58,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new order");
         await shoppingSiteCollection.insertOne({"ORDER": orders});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection BILLING
         shoppingSiteCollection =  db0.collection('billing');
@@ -67,7 +67,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         //insert the new BILLING and display in console the new # documents in BILLING
         console.log("Insert new billing");
         await shoppingSiteCollection.insertOne({"BILLING": billing});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection USERS
         shoppingSiteCollection =  db0.collection('users');
@@ -76,7 +76,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         //insert the new USER and display in console the new # documents in USERS
         console.log("Insert new user");
         await shoppingSiteCollection.insertOne({"USER": users});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection SHIPPING
         shoppingSiteCollection =  db0.collection('shipping');
@@ -85,7 +85,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new shipping");
         await shoppingSiteCollection.insertOne({"SHIPPING": shipping});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
     } finally {
         //Ensures that the client will close when you finish/error
@@ -96,26 +96,44 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
 module.exports.getOrderSummary = async function(req, res, next) {
     try {
         await client.connect();
-        await client.db("admin").command({ping: 1});
+        await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-
-        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        var db0 = client.db("shoppingsite");
         console.log("got shopping site");
-        console.log("db0" + db0.toString());
 
-        // var shoppingSiteCollection = db0.collection('customers');
-        // console.log("collection is " + shoppingSiteCollection.collectionName);
-        // console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
-        //
-        // const customerListCursor = customersCollection.find().limit(10);
-        // const customerList = await customerListCursor.toArray();
-        //
-         res.render('checkOut', {title: "checkOut"});
+        // Fetch data from the database
+        // Example: Assuming you have a collection named 'orders' and you want to fetch all documents from it
+        const ordersCollection = db0.collection('orders');
+        const orders = await ordersCollection.find({}).toArray();
 
+        // Example: Assuming you have a collection named 'billing' and you want to fetch the first document from it
+        const billingCollection = db0.collection('billing');
+        const billing = await billingCollection.findOne({});
+
+        // Example: Assuming you have a collection named 'orders' and you want to fetch all documents from it
+        const usersCollection = db0.collection('users');
+        const users = await usersCollection.find({}).toArray();
+
+        // Example: Assuming you have a collection named 'billing' and you want to fetch the first document from it
+        const shippingCollection = db0.collection('shipping');
+        const shipping = await shippingCollection.findOne({});
+
+
+        // Similarly, fetch data from other collections as needed
+
+        // Render the 'checkOut' view with the fetched data
+        res.render('checkOut', {
+            title: "Check Out",
+            orders: orders,
+            billing: billing,
+            users: users,
+            shipping: shipping
+            // Pass other fetched data here
+        });
     } catch (error) {
-        console.error("Error fetching customer data:", error);
-        res.status(500).send("Error fetching customer data");
+        console.error("Error fetching order data:", error);
+        res.status(500).send("Error fetching order data");
     } finally {
         await client.close();
     }
