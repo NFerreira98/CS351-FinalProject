@@ -138,14 +138,13 @@
         <h2>User Information</h2>
         <div class="form-group text-left">
             <label for="username">Username or Email<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email" value="<%= orders.username %>">
         </div>
         <div class="form-group text-left">
             <label for="password">Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" value="<%= orders.password %>">
         </div>
     </div>
-
 
 
     <!-- Display billing information -->
@@ -183,15 +182,17 @@
         <h2>Shipping Information</h2>
         <div class="form-group text-left">
             <label for="shippingStreet">Street Address<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingStreet" name="shippingStreet" placeholder="Enter your street address">
+            <input type="text" class="form-control" id="shippingStreet" name="shippingStreet" placeholder="Enter your street address" value="<%= shipping.street %>">
         </div>
+
         <div class="form-group text-left">
             <label for="shippingCity">City<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingCity" name="shippingCity" placeholder="Enter your city">
+            <input type="text" class="form-control" id="shippingCity" name="shippingCity" placeholder="Enter your city" value="<%= shipping.city %>">
         </div>
+
         <div class="form-group text-left">
             <label for="shippingState">State<span class="text-danger">*</span></label>
-            <select class="form-control" id="state" name="state" >
+            <select class="form-control" id="state" name="state" value="<%= shipping.state %>">
             <option value="">Please select a state</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -247,7 +248,7 @@
         </div>
         <div class="form-group text-left">
             <label for="shippingZip">Zip Code<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingZip" name="shippingZip" placeholder="Enter your zip code">
+            <input type="text" class="form-control" id="shippingZip" name="shippingZip" placeholder="Enter your zip code" value="<%= shipping.zip %>">
         </div>
     </div>
 

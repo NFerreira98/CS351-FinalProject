@@ -66,7 +66,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new BILLING and display in console the new # documents in BILLING
         console.log("Insert new billing");
-        await shoppingSiteCollection.insertOne({"BILLING": billing});
+        await shoppingSiteCollection.insertOne({"cardnumber": cardnumber, "cardname": cardname, "expiredate": expiredate, "cvv": cvv, "account": account});
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection USERS
@@ -75,7 +75,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new USER and display in console the new # documents in USERS
         console.log("Insert new user");
-        await shoppingSiteCollection.insertOne({"USER": users});
+        await shoppingSiteCollection.insertOne({"username": username, "password": password});
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection SHIPPING
@@ -84,7 +84,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new shipping");
-        await shoppingSiteCollection.insertOne({"SHIPPING": shipping});
+        await shoppingSiteCollection.insertOne({"street": street, "city": city , "state": state , "zip": zip});
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
     } finally {
@@ -103,24 +103,18 @@ module.exports.getOrderSummary = async function(req, res, next) {
         console.log("got shopping site");
 
         // Fetch data from the database
-        // Example: Assuming you have a collection named 'orders' and you want to fetch all documents from it
         const ordersCollection = db0.collection('orders');
         const orders = await ordersCollection.find({}).toArray();
 
-        // Example: Assuming you have a collection named 'billing' and you want to fetch the first document from it
         const billingCollection = db0.collection('billing');
         const billing = await billingCollection.findOne({});
 
-        // Example: Assuming you have a collection named 'orders' and you want to fetch all documents from it
         const usersCollection = db0.collection('users');
         const users = await usersCollection.find({}).toArray();
 
-        // Example: Assuming you have a collection named 'billing' and you want to fetch the first document from it
         const shippingCollection = db0.collection('shipping');
         const shipping = await shippingCollection.findOne({});
 
-
-        // Similarly, fetch data from other collections as needed
 
         // Render the 'checkOut' view with the fetched data
         res.render('checkOut', {
