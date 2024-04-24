@@ -17,25 +17,56 @@ const client = new MongoClient(uri, {
 module.exports.storeOrder = function(req, res, next) {
     var body = JSON.stringify(req.body);  //if wanted entire body as JSON
     var params = JSON.stringify(req.params);//if wanted parameters
-    var valueOrders = req.body.orders;  //retrieve the data associated with orders
-    var valueBilling = req.body.billing;  //retrieve the data associated with billing
-    var valueUsers = req.body.users; //retrieve the data associated with users
-    var valueShipping = req.body.shipping; //retrieve the data associated with shipping
+    var value_productid = req.body.productid;  //retrieve the data associated with orders
+    var value_productname = req.body.productname;  //retrieve the data associated with orders
+    var value_productprice = req.body.productprice;  //retrieve the data associated with orders
+    var value_productquantity = req.body.productquantity;  //retrieve the data associated with orders
 
-    console.log("NEW Store Order:  " + valueOrders +
-        "  Billing: " + valueBilling +
-        "  Users: " + valueUsers +
-        "  Shipping: " + valueShipping);
+    var value_cardnumber = req.body.cardnumber;  //retrieve the data associated with billing
+    var value_cardname = req.body.cardname;  //retrieve the data associated with billing
+    var value_expiredate = req.body.expiredate;  //retrieve the data associated with billing
+    var value_cvv = req.body.cvv;  //retrieve the data associated with billing
+    var value_account = req.body.account;  //retrieve the data associated with billing
+
+    var value_username = req.body.username; //retrieve the data associated with users
+    var value_password = req.body.password; //retrieve the data associated with users
+    var value_email = req.body.email; //retrieve the data associated with users
+
+    var value_street = req.body.street; //retrieve the data associated with shipping
+    var value_city = req.body.city; //retrieve the data associated with shipping
+    var value_state = req.body.state; //retrieve the data associated with shipping
+    var value_zip = req.body.zip; //retrieve the data associated with shipping
+
+    console.log(
+        "  ProductID:  " + value_productid +
+        "  ProductName:  " + value_productname +
+        "  ProductPrice:  " + value_productprice +
+        "  ProductQuantity:  " + value_productquantity +
+
+        "  CardNumber: " + value_cardnumber +
+        "  CardName: " + value_cardname +
+        "  ExpireDate: " + value_expiredate +
+        "  Cvv: " + value_cvv +
+        "  AccountType: " + value_account +
+
+        "  Username: " + value_username +
+        "  Password: " + value_password +
+        "  Email: " + value_email +
+
+        "  Street: " + value_street;
+        "  City: " + value_city;
+        "  State: " + value_state;
+        "  Zip: " + value_zip);
 
     //Call the function defined below that will connect to your MongoDB collection and create a new order
-    saveStoreOrderToMongoDB(valueOrders, valueBilling, valueUsers, valueShipping);
+    saveStoreOrderToMongoDB(valueOrders, valueBilling, value_username, value_password, value_email, valueShipping);
 
     //Send a response welcoming the new user
     res.send(" THANK YOUR FOR YOUR SUBMITTED ORDER ");
 }
 
 // BASIC baseline for sending storeOrder data to mongoDB
-async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
+async function saveStoreOrderToMongoDB(username, password, email, productid, productname, productprice, productquantity, cardnumber, cardname, expiredate, cvv, account, street, city, state, zip) {
     try {
 
         //STEP A: Connect the client to the server	(optional starting in v4.7)

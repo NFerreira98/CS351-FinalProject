@@ -147,28 +147,28 @@
     </div>
 
 
-    <!-- Display billing information -->
+    <!-- Display billing information-->
     <div class="checkout-section" id="billingSection" style="display: none;">
         <h2>Billing Information</h2>
         <div class="form-group text-left">
-            <label for="cardNumber">Card Number<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter your card number" value="<%= billing.cardnumber %>">
+            <label for="cardnumber">Card Number<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cardnumber" name="cardnumber" placeholder="Enter your card number" value="<%= billing.cardnumber %>">
         </div>
         <div class="form-group text-left">
-            <label for="cardName">Name on Card<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Enter the name on your card" value="<%= billing.cardname %>">
+            <label for="cardname">Name on Card<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cardname" name="cardname" placeholder="Enter the name on your card" value="<%= billing.cardname %>">
         </div>
         <div class="form-group text-left">
-            <label for="expirationDate">Expiration Date<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YYYY" value="<%= billing.expiredate %>">
+            <label for="expiredate">Expiration Date<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="expiredate" name="expiredate" placeholder="MM/YYYY" value="<%= billing.expiredate %>">
         </div>
         <div class="form-group text-left">
             <label for="cvv">CVV<span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" value="<%= billing.cvv %>">
         </div>
         <div class="form-group text-left">
-            <label for="accountType">Account Type<span class="text-danger">*</span></label>
-            <select class="form-control" id="accountType" name="accountType" value="<%= billing.account %>">
+            <label for="account">Account Type<span class="text-danger">*</span></label>
+            <select class="form-control" id="account" name="account" value="<%= billing.account %>">
                 <option value="">Select account type</option>
                 <option value="Checking">Checking</option>
                 <option value="Savings">Savings</option>
@@ -181,17 +181,17 @@
     <div class="checkout-section" id="shippingSection" style="display: none;">
         <h2>Shipping Information</h2>
         <div class="form-group text-left">
-            <label for="shippingStreet">Street Address<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingStreet" name="shippingStreet" placeholder="Enter your street address" value="<%= shipping.street %>">
+            <label for="street">Street Address<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="street" name="street" placeholder="Enter your street address" value="<%= shipping.street %>">
         </div>
 
         <div class="form-group text-left">
-            <label for="shippingCity">City<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingCity" name="shippingCity" placeholder="Enter your city" value="<%= shipping.city %>">
+            <label for="city">City<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" value="<%= shipping.city %>">
         </div>
 
         <div class="form-group text-left">
-            <label for="shippingState">State<span class="text-danger">*</span></label>
+            <label for="state">State<span class="text-danger">*</span></label>
             <select class="form-control" id="state" name="state" value="<%= shipping.state %>">
             <option value="">Please select a state</option>
             <option value="AL">Alabama</option>
@@ -247,8 +247,8 @@
             </select>
         </div>
         <div class="form-group text-left">
-            <label for="shippingZip">Zip Code<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="shippingZip" name="shippingZip" placeholder="Enter your zip code" value="<%= shipping.zip %>">
+            <label for="zip">Zip Code<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code" value="<%= shipping.zip %>">
         </div>
     </div>
 
