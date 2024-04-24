@@ -42,20 +42,17 @@ module.exports.storeOrder = function(req, res, next) {
         "  ProductName:  " + value_productname +
         "  ProductPrice:  " + value_productprice +
         "  ProductQuantity:  " + value_productquantity +
-
         "  CardNumber: " + value_cardnumber +
         "  CardName: " + value_cardname +
         "  ExpireDate: " + value_expiredate +
         "  Cvv: " + value_cvv +
         "  AccountType: " + value_account +
-
         "  Username: " + value_username +
         "  Password: " + value_password +
         "  Email: " + value_email +
-
-        "  Street: " + value_street;
-        "  City: " + value_city;
-        "  State: " + value_state;
+        "  Street: " + value_street +
+        "  City: " + value_city +
+        "  State: " + value_state +
         "  Zip: " + value_zip);
 
     //Call the function defined below that will connect to your MongoDB collection and create a new order
