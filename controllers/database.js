@@ -139,3 +139,61 @@ module.exports.getOrderSummary = async function(req, res, next) {
     }
 
 }
+
+
+// POST request to storeOrder
+module.exports.storeUser = function(req, res, next) {
+    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
+    var params = JSON.stringify(req.params);//if wanted parameters
+    var valueUsername = req.body.username;  //retrieve the data associated with username
+    var valueEmail = req.body.email;  //retrieve the data associated with email
+    var valuePassword = req.body.password; //retrieve the data associated with password
+    var valueStreet = req.body.street; //retrieve the data associated with street
+    var valueCity = req.body.city;  //retrieve the data associated with city
+    var valueState = req.body.state;  //retrieve the data associated with state
+    var valueZip = req.body.zip; //retrieve the data associated with zip
+    var valuePhone = req.body.phone; //retrieve the data associated with phone
+
+    console.log("NEW  User:  " + valueUsername +
+        "  email: " + valueEmail );
+
+    //Call the function defined below that will connect to your MongoDB collection and create a new order
+    saveUserToMongoDB(valueUsername, valueEmail, valuePassword,
+        valueStreet, valueCity, valueState, valueZip, valuePhone);
+
+    //Send a response welcoming the new user
+    res.send(" THANK YOUR FOR YOUR CREATING AN ACCOUNT ");
+}
+
+// BASIC baseline for sending storeOrder data to mongoDB
+async function saveUserToMongoDB(user, email, password, street, city, state, zip, phone) {
+    try {
+
+        //STEP A: Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+
+        //grab the collection ORDERS
+        var shoppingSiteCollection =  db0.collection('users');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+        //insert the new ORDER and display in console the new # documents in ORDERS
+        console.log("Insert new order");
+        await shoppingSiteCollection.insertOne({"USER": user, "EMAIL": email, "PASSWORD": password, "STREET": street, "CITY": city, "STATE": state, "ZIP": zip, "PHONE": phone  });
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
+
+
+    } finally {
+        //Ensures that the client will close when you finish/error
+        await client.close();
+    }
+}
