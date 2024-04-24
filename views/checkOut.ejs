@@ -138,11 +138,11 @@
         <h2>User Information</h2>
         <div class="form-group text-left">
             <label for="username">Username or Email<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email" value="<%= orders.username %>">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email" value="<%= users.username %>">
         </div>
         <div class="form-group text-left">
             <label for="password">Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" value="<%= orders.password %>">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" value="<%= users.password %>">
         </div>
     </div>
 
@@ -152,23 +152,23 @@
         <h2>Billing Information</h2>
         <div class="form-group text-left">
             <label for="cardNumber">Card Number<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter your card number">
+            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter your card number" value="<%= billing.cardnumber %>">
         </div>
         <div class="form-group text-left">
             <label for="cardName">Name on Card<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Enter the name on your card">
+            <input type="text" class="form-control" id="cardName" name="cardName" placeholder="Enter the name on your card" value="<%= billing.cardname %>">
         </div>
         <div class="form-group text-left">
             <label for="expirationDate">Expiration Date<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YYYY">
+            <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YYYY" value="<%= billing.expiredate %>">
         </div>
         <div class="form-group text-left">
             <label for="cvv">CVV<span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV">
+            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" value="<%= billing.cvv %>">
         </div>
         <div class="form-group text-left">
             <label for="accountType">Account Type<span class="text-danger">*</span></label>
-            <select class="form-control" id="accountType" name="accountType">
+            <select class="form-control" id="accountType" name="accountType" value="<%= billing.account %>">
                 <option value="">Select account type</option>
                 <option value="Checking">Checking</option>
                 <option value="Savings">Savings</option>

@@ -57,7 +57,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new order");
-        await shoppingSiteCollection.insertOne({"ORDER": orders});
+        await shoppingSiteCollection.insertOne({"productid": productid, "productname": productname, "productquantity": productquantity, "productprice": productprice });
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection BILLING
@@ -75,7 +75,7 @@ async function saveStoreOrderToMongoDB(orders, billing, users, shipping) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new USER and display in console the new # documents in USERS
         console.log("Insert new user");
-        await shoppingSiteCollection.insertOne({"username": username, "password": password});
+        await shoppingSiteCollection.insertOne({"username": username, "password": password, "email": email});
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
         //grab the collection SHIPPING
