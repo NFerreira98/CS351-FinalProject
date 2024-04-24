@@ -21,17 +21,14 @@ module.exports.storeOrder = function(req, res, next) {
     var value_productname = req.body.productname;  //retrieve the data associated with orders
     var value_productprice = req.body.productprice;  //retrieve the data associated with orders
     var value_productquantity = req.body.productquantity;  //retrieve the data associated with orders
-
     var value_cardnumber = req.body.cardnumber;  //retrieve the data associated with billing
     var value_cardname = req.body.cardname;  //retrieve the data associated with billing
     var value_expiredate = req.body.expiredate;  //retrieve the data associated with billing
     var value_cvv = req.body.cvv;  //retrieve the data associated with billing
     var value_account = req.body.account;  //retrieve the data associated with billing
-
     var value_username = req.body.username; //retrieve the data associated with users
     var value_password = req.body.password; //retrieve the data associated with users
     var value_email = req.body.email; //retrieve the data associated with users
-
     var value_street = req.body.street; //retrieve the data associated with shipping
     var value_city = req.body.city; //retrieve the data associated with shipping
     var value_state = req.body.state; //retrieve the data associated with shipping
@@ -56,8 +53,7 @@ module.exports.storeOrder = function(req, res, next) {
         "  Zip: " + value_zip);
 
     //Call the function defined below that will connect to your MongoDB collection and create a new order
-    saveStoreOrderToMongoDB(valueOrders, valueBilling, value_username, value_password, value_email, valueShipping);
-
+    saveStoreOrderToMongoDB(value_productid, value_productname, value_productprice, value_productquantity, value_cardnumber, value_cardname, value_expiredate, value_cvv, value_account, value_username, value_password, value_email, value_street, value_state, value_city, value_zip);
     //Send a response welcoming the new user
     res.send(" THANK YOUR FOR YOUR SUBMITTED ORDER ");
 }
