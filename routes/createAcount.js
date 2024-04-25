@@ -15,11 +15,12 @@ router.use(bodyParser.urlencoded({ extended: true })); // for parsing applicatio
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.sendFile('createAccount.html',{root:'./Project1'})
+
     // res.render('storeAccount', { title: 'ReadFormDataSaveMongoDB' });
 });
 
 
 var controllerDatabase = require('../controllers/database');   //this will load the controller file below
-router.post("/saveNewCustomer", controllerDatabase.saveNewCustomer); //see controllers/database.js file
+router.post("/", controllerDatabase.saveNewCustomer); //see controllers/database.js file
 
 module.exports = router;
