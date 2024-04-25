@@ -118,6 +118,27 @@
         border-bottom: 2px solid black;
         padding-bottom: 5px; /* Adjust this value to control the distance between the text and the underline */
     }
+    .circle-button {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid black;
+        margin-right: 10px;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    input[type="radio"] + .circle-button {
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked + .circle-button {
+        background-color: black;
+    }
+
 </style>
 
 
@@ -255,10 +276,28 @@
                 <label for="zip">Zip Code<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code">
             </div>
-            <div class="shipping-info" style="color: black; font-size: 1.1em;">
-                <p>Free Shipping in US!</p>
-                <p>Get your goodies in 7-10 Business days</p>
+            <div class="shipping-options">
+                <p>Select Shipping Method:</p>
+
+                <label for="free-shipping">
+                    <input type="radio" id="free-shipping" name="shipping" value="free">
+                    <span class="circle-button"></span>
+                    Free Shipping (7-10 Business days)
+                </label>
+
+                <label for="standard-shipping">
+                    <input type="radio" id="standard-shipping" name="shipping" value="standard">
+                    <span class="circle-button"></span>
+                    $6.99 - Standard Shipping (3-5 Business days)
+                </label>
+
+                <label for="express-shipping">
+                    <input type="radio" id="express-shipping" name="shipping" value="express">
+                    <span class="circle-button"></span>
+                    $9.99 - Express Shipping (1-2 Business days)
+                </label>
             </div>
+
 
         </div>
 
@@ -311,13 +350,6 @@
                 if (areFieldsFilled) {
                     alert("Order Confirmed");
 
-                    // Ask the user if they want to go to the home page
-                    var goToHomePage = confirm("Do you want to go to the home page?");
-
-                    // If the user confirms, redirect to the home page
-                    if (goToHomePage) {
-                        window.location.href = "Home.html";
-                    }
                 } else {
                     // If not all fields are filled out, show a pop-up with "Missing information" message
                     alert("Missing information");
