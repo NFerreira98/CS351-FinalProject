@@ -77,161 +77,33 @@
 </nav>
 <!-- End Navbar -->
 
-
+.
 
 <!-- Start of Page Main Text-->
-<div class="container">
-    <h3 class = "text-center">(item) added to cart!</h3>
-    <h4 class = "text-center">Proceed to Checkout or Continue Shopping</h4>
+
+<div class="addToCart-section" style="margin: auto; width: 50%; padding: 10px">
+    <h1 class="underlined">Added to Cart</h1>
+    <h2>Item is added to cart!<span class="text-danger">*</span></h2>
+    <button id="contShopBtn">Continue Shopping</button>
+    <button id="proceedChkOutBtn">Proceed to Checkout</button>
 </div>
+
+<!-- script for button actions -->
+<script>
+    document.getElementById('contShopBtn').addEventListener('click', function() {
+            window.location.href = "home.html";
+    });
+
+    document.getElementById('proceedChkOutBtn').addEventListener('click', function() {
+        window.location.href = '/checkOut';
+    });
+</script>
+
 <!-- End of Page Main Text-->
 
 
 
 <!-- Everything else other than ADDtoCART-->
-<h2 class="text-center navbar-light bg-secondary" style = "color: white;">Recommended Products</h2>
-<hr>
-
-<section class="py-6 bg-light">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
-            <div class="col mb-5 ">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/MenRedGi.webp" alt="Men's Red Gi" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Men's Dark Red Gi</h5>
-                            <!-- Product price-->
-                            $89.99
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="mensRedGi.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/WomanPurpleGi.webp" alt="Women's Purple Gi" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Women's Purple Gi</h5>
-                            <!-- Product reviews-->
-
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$70.00</span>
-
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensPurpleGi.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/MenBlueOrangeRashguard.webp" alt="Men's Psychedelic Rashguard" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Men's Blue/Orange Psychedelic Rashguard</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$39.99</span>
-                            $25.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="mensBlueOrangeRashguard.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5 ">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/WomanBlackRashguard.webp" alt="Women's Pink Mt. Fuji Rashguard" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Women's Pink Mt. Fuji Rashguard</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$49.99</span>
-                            $29.99
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensBlackRashguard.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5 ">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/BlueBelt.webp" alt="Men's Red Gi" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fuji Blue Belt</h5>
-                            <!-- Product price-->
-                            $39.99
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="adultBlueBelt.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5 ">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="images/WomanWhiteGi.webp" alt="Women's White Gi" />
-                    <hr>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Women's White Gi</h5>
-                            <span class="text-muted text-decoration-line-through" style="text-decoration: line-through;">$79.99</span>
-                            $49.99
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="womensWhiteGi.html">Go to Page</a></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
 
 <hr>
 <div class="container text-white bg-secondary p-4">

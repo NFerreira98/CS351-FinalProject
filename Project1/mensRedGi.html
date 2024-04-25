@@ -88,39 +88,52 @@
 		<!-- InstanceBeginEditable name="ProductInformation" -->
 		
 		<!--template to edit individual products-->
+
+
+
 		
         <!-- Product section-->
+        <form action="/addItemToCart" method="post">
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="images/MenRedGi.webp" alt="Men's Red Gi" /></div>
-					
+
 					<!-- Product Information-->
                     <div class="col-md-6">
-                        <div class="small mb-1">Product ID: MG-04</div>
-                        <h1 class="display-5 fw-bolder">Men's Dark Red Gi</h1>
+
+                        <div class="small mb-1">
+                            <label for="id">
+                            <input value="MG-04" id="id" name="id" type="hidden">Product ID: MG-04
+                            </label>
+                        </div>
+
+                        <h1 class="display-5 fw-bolder">
+                            <label for="name">
+                                <input value="Men's Dark Red Gi" id="name" name="name" type="hidden">Men's Dark Red Gi
+                            </label>
+                        </h1>
+
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked" ></span>
+
                         <div class="fs-5 mb-5">
-                            
-                            <span>$89.99</span>
+                            <label for="id">
+                                <input value="89.99" id="price" name="price" type="hidden">$89.99
+                            </label>
                         </div>
+
                         <p class="lead">Step onto the mat with confidence in one of our premium dark red BJJ Gis. Designed for superior performance and durability, our Gis are crafted from the finest materials to offer you the perfect balance of comfort and flexibility. With reinforced stitching in critical areas, they are built to withstand the rigors of intense training and competition. </p>
                         <div class="d-flex">
+
+							<label for="quantity">
+                            <input class="form-control text-center me-1" id="quantity" type="number" name="quantity" value="1" style="max-width: 4rem" />
+                            </label>
 							
-							<button class="btn btn-outline-secondary me-1 sub-quantity" type="button" >
-       							 <i class="bi-dash"></i>
-    						</button>
-							
-                            <input class="form-control text-center me-1" id="inputQuantity" type="number" value="1" style="max-width: 4rem" />
-							<button class="btn btn-outline-secondary me-4 add-quantity" type="button" >
-        						<i class="bi-plus"></i>
-    						</button>
-							
-                            <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" type="button">
+                            <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" id="addToCartBtn" type="submit" value="Go">
                                 <i class="bi-cart-fill"></i>
                                 Add to Cart
                             </button>
@@ -130,6 +143,10 @@
                 </div>
             </div>
         </section>
+        </form>
+
+
+
         <!-- Related items section-->
         <section class="py-5 bg-light">s
             <div class="container px-4 px-lg-5 mt-5">

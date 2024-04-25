@@ -58,57 +58,6 @@ module.exports.storeOrder = function(req, res, next) {
     res.send(" THANK YOUR FOR YOUR SUBMITTED ORDER ");
 }
 
-// controller function to add item to cart
-module.exports.addItemToCart =  function(req, res, next) {
-
-    //step 2.1 Read in the incomming form data
-    //expecting data variable called name --retrieve value using body-parser
-    // var body = JSON.stringify(req.body);  //if wanted entire body as JSON
-    // var params = JSON.stringify(req.params);//if wanted parameters
-    // var value_item = req.body.item;  //retrieve the data associated with name
-    //
-    //
-    // console.log("NEW Item Added to Cart  " + value_item);
-    //
-    // //step 2.2 Call the function defined below that will connect to your MongDB collection and create a new customer
-    // addToCartAndToMongoDB(value_item);
-
-    //step 2.3 Send a response welcoming the new user
-    res.render('addToCart', {title: "addToCart"});
-
-};
-
-async function addToCartAndToMongoDB(item) {
-    try {
-
-        //STEP A: Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-        //STEP B:  Send a ping to confirm a successful connection
-        await client.db("admin").command({ping: 1});
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
-
-        //STEP C: connect to the database "shoppingsite"
-        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
-        console.log("got shopping site");
-        console.log("db0" + db0.toString());
-
-        //STEP D: grab the orders collection
-        var shoppingSiteCollection = db0.collection('orders');
-        console.log("collection is " + shoppingSiteCollection.collectionName);
-        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
-
-        //STEP E: insert the new customer and display in console the new # documents in customers
-        console.log("Insert new order");
-        await shoppingSiteCollection.insertOne({"order": item});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
-
-    } finally {
-        //Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
-
 // BASIC baseline for sending storeOrder data to mongoDB
 async function saveStoreOrderToMongoDB(username, password, email, productid, productname, productprice, productquantity, cardnumber, cardname, expiredate, cvv, account, street, city, state, zip) {
     try {
@@ -208,4 +157,54 @@ module.exports.getOrderSummary = async function(req, res, next) {
         await client.close();
     }
 
+}
+
+// controller function to add item to cart
+module.exports.addItemToCart =  function(req, res, next) {
+    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
+    var params = JSON.stringify(req.params);//if wanted parameters
+    var value_productid = req.body.id;  //retrieve the data associated with orders
+    var value_productname = req.body.name;  //retrieve the data associated with orders
+    var value_productprice = req.body.price;  //retrieve the data associated with orders
+    var value_productquantity = req.body.quantity;  //retrieve the data associated with orders
+
+    console.log(
+        "  ProductID:  " + value_productid +
+        "  ProductName:  " + value_productname +
+        "  ProductPrice:  " + value_productprice +
+        "  ProductQuantity:  " + value_productquantity);
+
+    res.render('addToCart', {title: "addToCart"});
+
+};
+
+async function addToCartAndToMongoDB(item) {
+    try {
+
+        //STEP A: Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ping: 1});
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+
+        //STEP D: grab the orders collection
+        var shoppingSiteCollection = db0.collection('orders');
+        console.log("collection is " + shoppingSiteCollection.collectionName);
+        console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
+
+        //STEP E: insert the new customer and display in console the new # documents in customers
+        console.log("Insert new order");
+        await shoppingSiteCollection.insertOne({"order": item});
+        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+
+    } finally {
+        //Ensures that the client will close when you finish/error
+        await client.close();
+    }
 }
