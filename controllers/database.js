@@ -55,10 +55,7 @@ module.exports.storeOrder = function(req, res, next) {
     //Call the function defined below that will connect to your MongoDB collection and create a new order
     saveStoreOrderToMongoDB(value_username, value_password, value_email, value_productid, value_productname, value_productprice, value_productquantity, value_cardnumber, value_cardname, value_expiredate, value_cvv, value_account, value_street, value_city, value_state, value_zip);
     //Send a response welcoming the new user
-    res.send(`
-    <p>THANK YOU FOR YOUR SUBMITTED ORDER</p>
-    <a href="home.html"><button>Return to Home</button></a>
-`);
+    res.redirect('https://csweb01.csueastbay.edu/~bo5237/Project1/home.html');
 }
 
 // BASIC baseline for sending storeOrder data to mongoDB
