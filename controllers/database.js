@@ -33,7 +33,8 @@ console.log("is inside Save new customer")
     saveCustomerToMongoDB(value_username,value_email,value_password,value_street,value_city,value_state,value_zip,value_phone);
 
     //step 2.3 Send a response welcoming the new user
-    res.send("Welcome,  " + value_username + "</br> We will reach you at: " + value_email);
+   res.render('success')
+    // res.send("Welcome,  " + value_username + "</br> We will reach you at: " + value_email);
 
 };
 
