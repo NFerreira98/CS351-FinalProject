@@ -69,6 +69,36 @@ async function saveCustomerToMongoDB(username,email,password,street,city,state,z
         await client.close();
     }
 }
+module.exports.getAccount= async function (req, res, next) {
+    try {
+
+        //STEP A: Connect the client to the server  (optional starting in v4.7)
+        await client.connect();
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ping: 1});
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+        //STEP D: grab the customers collection
+        var customersCollection = db0.collection('users');
+        console.log("collection is " + customersCollection.collectionName);
+        console.log(" # documents in it " + await customersCollection.countDocuments());
+        const listCursor = customersCollection.find().limit(10);
+        const loginSuccess = await listCursor.toArray();
+
+        res.render('loginSuccess', {title: 'loginSuccess', loginSuccess});
+
+    } catch (error) {
+        console.error("Error fetching customer data: ", error);
+        res.status(500).send("Error fetching customer data");
+    } finally {
+        // STEP F: Ensures that the client will close when you finish/error
+        await client.close();
+
+    }
+}
 module.exports.checkOut = async function (req, res, next) {
     try {
 
