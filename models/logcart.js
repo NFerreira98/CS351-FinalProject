@@ -1,8 +1,8 @@
 // stores product data into cart object
-module.exports = function Cart(oldCart) {
-    this.items = oldCart.items || {};
-    this.totalQty = oldCart.totalQty || 0;
-    this.totalPrice = oldCart.totalPrice || 0;
+module.exports = function logCart(oldlogCart) {
+    this.items = oldlogCart.items || {};
+    this.totalQty = oldlogCart.totalQty || 0;
+    this.totalPrice = oldlogCart.totalPrice || 0;
     // add elements into cart
     this.add = function(item, id) {
         var storedItem = this.items[id];

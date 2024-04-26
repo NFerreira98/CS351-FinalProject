@@ -1,7 +1,7 @@
 var { uri } = require('./databaseConnection');
 //Define some variables needed for the database Controller functions
 const { MongoClient, ServerApiVersion } = require('mongodb');
-var Cart = require("../models/cart");
+var logCart = require("../models/logcart");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -176,16 +176,16 @@ module.exports.addItemToCart =  async function(req, res, next) {
             "  ProductPic:  " + value_productpic
         );
         // stores current session cart or makes one if does not exist
-        var cart = new Cart(req.session.cart ? req.session.cart: {});
+        var logcart = new logCart(req.session.logcart ? req.session.logcart: {});
         // add data into cart
-        cart.add(
+        logcart.add(
             value_productid,
             value_productname,
             value_productprice,
             value_productquantity
         );
         // sets data into session cart and displays contents in log
-        req.session.cart = cart;
+        req.session.cart = logcart;
         console.log(req.session.cart);
         // sends values as parameters to database storing function
         addToCartAndToMongoDB(

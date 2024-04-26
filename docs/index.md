@@ -23,7 +23,7 @@ app.js: Acts as the main entry point into the application which creates an expre
 - databaseConnections.js: Includes our MongoDB URI for accessing the contents of the database throughout the program
   
 #### routes
-- cart.js
+- logcart.js
 - createAccount.js
 - index.js
 - loginSuccess.js
