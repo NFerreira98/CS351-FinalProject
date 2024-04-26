@@ -1,9 +1,8 @@
-
 var { uri } = require('./databaseConnection');
 
 //Define some variables needed for the database Controller functions
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const Cart = require("../models/cart");
+var Cart = require("../models/cart");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -163,33 +162,35 @@ module.exports.getOrderSummary = async function(req, res, next) {
 // controller function to add item to cart
 module.exports.addItemToCart =  async function(req, res, next) {
     try {
+        // storing variable values from Post execution of product pages
         var body = JSON.stringify(req.body);
         var params = JSON.stringify(req.params);
         var value_productid = req.body.id;
         var value_productname = req.body.name;
-        var value_productprice = parseInt(req.body.price);
+        var value_productprice = req.body.price;
         var value_productquantity = req.body.quantity;
         var value_sessionid = req.session.id;
-
+        // console messages for tracking
         console.log(
             "  Session ID:  " + value_sessionid +
             "  ProductID:  " + value_productid +
             "  ProductName:  " + value_productname +
             "  ProductPrice:  " + value_productprice +
-            "  ProductQuantity:  " + value_productquantity);
-
+            "  ProductQuantity:  " + value_productquantity
+        );
+        // stores current session cart or makes one if does not exist
         var cart = new Cart(req.session.cart ? req.session.cart: {});
-
+        // add data into cart
         cart.add(
             value_productid,
             value_productname,
             value_productprice,
             value_productquantity
         );
-
+        // sets data into session cart and displays contents in log
         req.session.cart = cart;
         console.log(req.session.cart);
-        // res.redirect('/addToCart')
+        // sends values as parameters to database storing function
         addToCartAndToMongoDB(
             value_productid,
             value_productname,
@@ -197,9 +198,9 @@ module.exports.addItemToCart =  async function(req, res, next) {
             value_productquantity,
             value_sessionid
         );
-
+        // renders addToCart view confirming process and sends product name as data to ejs
         res.render('addToCart', {title: "addToCart", data: value_productname});
-
+    // error handling
     } catch (error) {
         console.error("Error fetching customer data:", error);
         res.status(500).send("Error fetching customer data");
@@ -207,23 +208,19 @@ module.exports.addItemToCart =  async function(req, res, next) {
         await client.close();
     }
 };
-
+// saves and stores product data to mongoDB database
 async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
     try {
-
-        //STEP A: Connect the client to the server	(optional starting in v4.7)
+        // Connect the client to the server
         await client.connect();
-        //STEP B:  Send a ping to confirm a successful connection
+        // Send a ping to confirm a successful connection
         await client.db("admin").command({ping: 1});
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
-
-        //STEP C: connect to the database "shoppingsite"
+        // Connect to the database "shoppingsite"
         var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
         console.log("got shopping site");
         console.log("db0" + db0.toString());
-
-        //grab the collection ORDERS
+        // Grab the collection ORDERS
         var shoppingSiteCollection =  db0.collection('orders');
         console.log("collection is "+ shoppingSiteCollection.collectionName);
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
@@ -237,7 +234,7 @@ async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
             "Product Quantity: ": quantity
         });
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
-
+    // error handling
     } catch (error) {
         console.error("Error fetching customer data:", error);
         res.status(500).send("Error fetching customer data");

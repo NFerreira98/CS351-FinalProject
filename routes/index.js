@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'GuardGear' });
 });
 
-var controllerDatabase = require('../controllers/database');   //this will load the controller file below
+var controllerDatabase = require('../controllers/database');   //this will load the controller files below
 router.post("/addItemToCart", controllerDatabase.addItemToCart); //see controllers/database.js file
 router.post("/getOrderSummary", controllerDatabase.getOrderSummary);
 router.post("/storeOrder", controllerDatabase.storeOrder);
