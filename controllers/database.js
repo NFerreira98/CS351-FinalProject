@@ -185,8 +185,8 @@ module.exports.addItemToCart =  async function(req, res, next) {
             value_productquantity
         );
         // sets data into session cart and displays contents in log
-        req.session.cart = logcart;
-        console.log(req.session.cart);
+        req.session.logcart = logcart;
+        console.log(req.session.logcart);
         // sends values as parameters to database storing function
         addToCartAndToMongoDB(
             value_productid,
