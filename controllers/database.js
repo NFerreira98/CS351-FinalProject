@@ -228,11 +228,11 @@ async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new order");
         await shoppingSiteCollection.insertOne({
-            "Session ID: ": sessionID,
-            "Product ID: ": id,
-            "Product Name: ": name,
-            "Product Price: ": price,
-            "Product Quantity: ": quantity
+            "sessionID": sessionID,
+            "productID": id,
+            "productName": name,
+            "productPrice": price,
+            "productQuantity": quantity
         });
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
     // error handling
