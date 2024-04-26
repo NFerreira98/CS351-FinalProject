@@ -3,6 +3,7 @@ var { uri } = require('./databaseConnection');
 
 //Define some variables needed for the database Controller functions
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const Cart = require("../models/cart");
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -161,24 +162,34 @@ module.exports.getOrderSummary = async function(req, res, next) {
 
 // controller function to add item to cart
 module.exports.addItemToCart =  function(req, res, next) {
-    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
-    var params = JSON.stringify(req.params);//if wanted parameters
-    var value_productid = req.body.id;  //retrieve the data associated with orders
-    var value_productname = req.body.name;  //retrieve the data associated with orders
-    var value_productprice = req.body.price;  //retrieve the data associated with orders
-    var value_productquantity = req.body.quantity;  //retrieve the data associated with orders
+    var body = JSON.stringify(req.body);
+    var params = JSON.stringify(req.params);
+    var value_productid = req.body.id;
+    var value_productname = req.body.name;
+    var value_productprice = req.body.price;
+    var value_productquantity = req.body.quantity;
+    var value_sessionid = req.session.id;
 
     console.log(
+        "  Session ID:  " + value_sessionid +
         "  ProductID:  " + value_productid +
         "  ProductName:  " + value_productname +
         "  ProductPrice:  " + value_productprice +
         "  ProductQuantity:  " + value_productquantity);
 
+    var cart = new Cart(req.session.cart ? req.session.cart: {});
+
+    cart.add(value_productid, value_productname, value_productprice, value_productquantity);
+    req.session.cart = cart;
+    console.log(req.session.cart);
+    // res.redirect('/addToCart')
+    // addToCartAndToMongoDB(cart, value_sessionid);
+
     res.render('addToCart', {title: "addToCart"});
 
 };
 
-async function addToCartAndToMongoDB(item) {
+async function addToCartAndToMongoDB(order, sessionID) {
     try {
 
         //STEP A: Connect the client to the server	(optional starting in v4.7)
@@ -193,15 +204,14 @@ async function addToCartAndToMongoDB(item) {
         console.log("got shopping site");
         console.log("db0" + db0.toString());
 
-        //STEP D: grab the orders collection
-        var shoppingSiteCollection = db0.collection('orders');
-        console.log("collection is " + shoppingSiteCollection.collectionName);
+        //grab the collection ORDERS
+        var shoppingSiteCollection =  db0.collection('orders');
+        console.log("collection is "+ shoppingSiteCollection.collectionName);
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
-
-        //STEP E: insert the new customer and display in console the new # documents in customers
+        //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new order");
-        await shoppingSiteCollection.insertOne({"order": item});
-        console.log("  # documnents now = " + await shoppingSiteCollection.countDocuments());
+        await shoppingSiteCollection.insertOne({"Session ID: ": sessionID, "ORDER: ": order });
+        console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
     } finally {
         //Ensures that the client will close when you finish/error
