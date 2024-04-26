@@ -161,44 +161,51 @@ module.exports.getOrderSummary = async function(req, res, next) {
 }
 
 // controller function to add item to cart
-module.exports.addItemToCart =  function(req, res, next) {
-    var body = JSON.stringify(req.body);
-    var params = JSON.stringify(req.params);
-    var value_productid = req.body.id;
-    var value_productname = req.body.name;
-    var value_productprice = req.body.price;
-    var value_productquantity = req.body.quantity;
-    var value_sessionid = req.session.id;
+module.exports.addItemToCart =  async function(req, res, next) {
+    try {
+        var body = JSON.stringify(req.body);
+        var params = JSON.stringify(req.params);
+        var value_productid = req.body.id;
+        var value_productname = req.body.name;
+        var value_productprice = parseInt(req.body.price);
+        var value_productquantity = req.body.quantity;
+        var value_sessionid = req.session.id;
 
-    console.log(
-        "  Session ID:  " + value_sessionid +
-        "  ProductID:  " + value_productid +
-        "  ProductName:  " + value_productname +
-        "  ProductPrice:  " + value_productprice +
-        "  ProductQuantity:  " + value_productquantity);
+        console.log(
+            "  Session ID:  " + value_sessionid +
+            "  ProductID:  " + value_productid +
+            "  ProductName:  " + value_productname +
+            "  ProductPrice:  " + value_productprice +
+            "  ProductQuantity:  " + value_productquantity);
 
-    var cart = new Cart(req.session.cart ? req.session.cart: {});
+        var cart = new Cart(req.session.cart ? req.session.cart: {});
 
-    cart.add(
-        value_productid,
-        value_productname,
-        value_productprice,
-        value_productquantity
-    );
+        cart.add(
+            value_productid,
+            value_productname,
+            value_productprice,
+            value_productquantity
+        );
 
-    req.session.cart = cart;
-    console.log(req.session.cart);
-    // res.redirect('/addToCart')
-    addToCartAndToMongoDB(
-        value_productid,
-        value_productname,
-        value_productprice,
-        value_productquantity,
-        value_sessionid
-    );
+        req.session.cart = cart;
+        console.log(req.session.cart);
+        // res.redirect('/addToCart')
+        addToCartAndToMongoDB(
+            value_productid,
+            value_productname,
+            value_productprice,
+            value_productquantity,
+            value_sessionid
+        );
 
-    res.render('addToCart', {title: "addToCart"});
+        res.render('addToCart', {title: "addToCart", data: value_productname});
 
+    } catch (error) {
+        console.error("Error fetching customer data:", error);
+        res.status(500).send("Error fetching customer data");
+    } finally {
+        await client.close();
+    }
 };
 
 async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
@@ -231,8 +238,10 @@ async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
         });
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
+    } catch (error) {
+        console.error("Error fetching customer data:", error);
+        res.status(500).send("Error fetching customer data");
     } finally {
-        //Ensures that the client will close when you finish/error
         await client.close();
     }
 }
