@@ -179,17 +179,29 @@ module.exports.addItemToCart =  function(req, res, next) {
 
     var cart = new Cart(req.session.cart ? req.session.cart: {});
 
-    cart.add(value_productid, value_productname, value_productprice, value_productquantity);
+    cart.add(
+        value_productid,
+        value_productname,
+        value_productprice,
+        value_productquantity
+    );
+
     req.session.cart = cart;
     console.log(req.session.cart);
     // res.redirect('/addToCart')
-    // addToCartAndToMongoDB(cart, value_sessionid);
+    addToCartAndToMongoDB(
+        value_productid,
+        value_productname,
+        value_productprice,
+        value_productquantity,
+        value_sessionid
+    );
 
     res.render('addToCart', {title: "addToCart"});
 
 };
 
-async function addToCartAndToMongoDB(order, sessionID) {
+async function addToCartAndToMongoDB(id, name, price, quantity, sessionID) {
     try {
 
         //STEP A: Connect the client to the server	(optional starting in v4.7)
@@ -210,7 +222,13 @@ async function addToCartAndToMongoDB(order, sessionID) {
         console.log(" # documents in it " + await shoppingSiteCollection.countDocuments());
         //insert the new ORDER and display in console the new # documents in ORDERS
         console.log("Insert new order");
-        await shoppingSiteCollection.insertOne({"Session ID: ": sessionID, "ORDER: ": order });
+        await shoppingSiteCollection.insertOne({
+            "Session ID: ": sessionID,
+            "Product ID: ": id,
+            "Product Name: ": name,
+            "Product Price: ": price,
+            "Product Quantity: ": quantity
+        });
         console.log("  # documents now = " + await shoppingSiteCollection.countDocuments());
 
     } finally {
