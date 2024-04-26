@@ -28,12 +28,18 @@ console.log("is inside Save new customer")
 
 
    console.log("NEW Customer Data  " + value_username + "  email: " + value_email);
-
+    var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+    var customersCollection = db0.collection('users');
+    if (customersCollection.find({username: value_username})) {
+        res.send("You already have an account");
+        // res.redirect('https://csweb01.csueastbay.edu/~bo5237/Project1/account.html')
+    }else{
     //step 2.2 Call the function defined below that will connect to your MongDB collection and create a new customer
     saveCustomerToMongoDB(value_username,value_email,value_password,value_street,value_city,value_state,value_zip,value_phone);
 
     //step 2.3 Send a response welcoming the new user
-   res.render('success')
+    res.render('/success')
+    }
     // res.send("Welcome,  " + value_username + "</br> We will reach you at: " + value_email);
 
 };

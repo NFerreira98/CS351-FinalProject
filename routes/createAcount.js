@@ -14,8 +14,8 @@ router.use(bodyParser.urlencoded({ extended: true })); // for parsing applicatio
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.sendFile('createAccount.html',{root:'./Project1'})
-
+    // res.sendFile('createAccount.html',{root:'./Project1'})
+   res.redirect('https://csweb01.csueastbay.edu/~bo5237/Project1/createAccount.html')
     // res.render('storeAccount', { title: 'ReadFormDataSaveMongoDB' });
 });
 
