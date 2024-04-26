@@ -1,5 +1,5 @@
 # CS351-FinalProject
- Static website for the CS351-Project1
+Website for CS351-Project2 including backend development
 
  # Title: Guard Gear
 
