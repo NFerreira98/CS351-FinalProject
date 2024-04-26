@@ -10809,46 +10809,56 @@ textarea.form-control-lg {
   .d-print-inline {
     display: inline !important;
   }
+
   .d-print-inline-block {
     display: inline-block !important;
   }
+
   .d-print-block {
     display: block !important;
   }
+
   .d-print-grid {
     display: grid !important;
   }
+
   .d-print-table {
     display: table !important;
   }
+
   .d-print-table-row {
     display: table-row !important;
   }
+
   .d-print-table-cell {
     display: table-cell !important;
   }
+
   .d-print-flex {
     display: flex !important;
   }
+
   .d-print-inline-flex {
     display: inline-flex !important;
   }
+
   .d-print-none {
     display: none !important;
   }
 
-.mailing-list-section {
+  .mailing-list-section {
     background-color: #f2f2f2; /* Light gray background */
     padding: 20px 0; /* Some padding for spacing */
-}
+  }
 
-.mailing-list-section h3 {
+  .mailing-list-section h3 {
     margin-bottom: 15px; /* Spacing below the heading */
-}
+  }
 
-.mailing-list-section form {
+  .mailing-list-section form {
     max-width: 500px; /* Optional: Restrict form width */
     margin: auto; /* Center the form */
+  }
 }
 	
 

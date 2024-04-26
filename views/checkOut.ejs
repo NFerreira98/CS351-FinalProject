@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guard Gear</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="home.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;" role="button" aria-expanded="false">
+            <img src="images/Cesar_Gracie_Academy_Logo.png" height="50" width="50" alt="Company Logo" >
+            <h2 style="margin-left: 10px; margin-bottom: 0; margin-right: 40px; font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'">Guard Gear</h2>
+        </a>
+        <!-- Hamburger button for mobile devices to access navbar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop All</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role = "button" data-toggle="dropdown" href="#">Categories</a>
+                    <div class="dropdown-menu" >
+
+                        <a class="dropdown-item" href="mensgis.html">Men's Gis</a>
+                        <a class="dropdown-item" href="mensrashguards.html">Men's Rashguards</a>
+                        <a class="dropdown-item" href="womensgis.html">Women's Gis</a>
+                        <a class="dropdown-item" href="womensrashguards.html">Women's Rashguards</a>
+                        <a class="dropdown-item" href="belts.html">Belts</a>
+                    </div>
+                </li>
+
+            </ul>
+
+
+
+            <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
+
+                <!-- Right Links -->
+                <li class="nav-item">
+                    <a class="nav-link " href="account.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="images/person.svg" alt = "Account" class="img-fluid" height="25" width="25">
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="cart.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="images/cart.svg" alt = "Shopping Cart" class="img-fluid" height="25" width="25">
+                    </a>
+
+                </li>
+            </ul>
+
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- End Navbar -->
+
+
+
+<!-- Home Page Main Text-->
+
+<title>Checkout</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center; /* Center-align all text */
+        background-color: #f3f3f3;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto; /* Center the container */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    h2 {
+        margin-top: 30px; /* Add some space between sections */
+        color: #333;
+    }
+
+    p {
+        margin-bottom: 15px;
+        color: #666;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+    .underlined {
+        border-bottom: 2px solid black;
+        padding-bottom: 5px; /* Adjust this value to control the distance between the text and the underline */
+    }
+</style>
+
+
+
+
+<div class="container">
+    <h1 class="underlined"> Cart Checkout</h1>
+
+    <!-- Ask if the user is already registered -->
+    <div class="checkout-section">
+        <h2>Are you a Registered User?<span class="text-danger">*</span></h2>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+
+    <form action="/storeOrder" method="post">
+    <!-- Display user information -->
+    <div class="checkout-section" id="userSection" style="display: none;">
+        <h2>User Information</h2>
+        <div class="form-group text-left">
+            <label for="username">Username or Email<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username or email">
+        </div>
+        <div class="form-group text-left">
+            <label for="password">Password<span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+        </div>
+    </div>
+
+
+    <!-- Display billing information-->
+    <div class="checkout-section" id="billingSection" style="display: none;">
+        <h2>Billing Information</h2>
+        <div class="form-group text-left">
+            <label for="cardnumber">Card Number<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cardnumber" name="cardnumber" placeholder="Enter your card number">
+        </div>
+        <div class="form-group text-left">
+            <label for="cardname">Name on Card<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cardname" name="cardname" placeholder="Enter the name on your card">
+        </div>
+        <div class="form-group text-left">
+            <label for="expiredate">Expiration Date<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="expiredate" name="expiredate" placeholder="MM/YYYY">
+        </div>
+        <div class="form-group text-left">
+            <label for="cvv">CVV<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV">
+        </div>
+        <div class="form-group text-left">
+            <label for="account">Account Type<span class="text-danger">*</span></label>
+            <select class="form-control" id="account" name="account">
+                <option value="">Select account type</option>
+                <option value="Checking">Checking</option>
+                <option value="Savings">Savings</option>
+            </select>
+        </div>
+    </div>
+
+
+    <!-- Display shipping information -->
+    <div class="checkout-section" id="shippingSection" style="display: none;">
+        <h2>Shipping Information</h2>
+        <div class="form-group text-left">
+            <label for="street">Street Address<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="street" name="street" placeholder="Enter your street address">
+        </div>
+
+        <div class="form-group text-left">
+            <label for="city">City<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city">
+        </div>
+
+        <div class="form-group text-left">
+            <label for="state">State<span class="text-danger">*</span></label>
+            <select class="form-control" id="state" name="state">
+                <option value="">Please select a state</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+        </div>
+        <div class="form-group text-left">
+            <label for="zip">Zip Code<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your zip code">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('yesButton').addEventListener('click', function() {
+            document.getElementById('billingSection').style.display = 'block';
+            document.getElementById('shippingSection').style.display = 'block';
+            document.getElementById('userSection').style.display = 'block';
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            window.location.href = "createaccount.html";
+        });
+    </script>
+
+    <!-- Submit Button -->
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" id="submitOrderBtn" value="Go">Submit Order</button>
+    </div>
+    </form>
+
+
+    <!-- JavaScript code to handle the button click and show pop-up -->
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the submit button element
+            var submitBtn = document.getElementById("submitOrderBtn");
+
+            // Hide the submit button initially
+            submitBtn.style.display = "none";
+
+            // Add a click event listener to the "Yes" button
+            document.getElementById('yesButton').addEventListener('click', function() {
+                // Show the submit button when the user chooses "Yes"
+                submitBtn.style.display = "block";
+
+                // Show the billing, user, and shipping sections
+                document.getElementById('billingSection').style.display = 'block';
+                document.getElementById('shippingSection').style.display = 'block';
+                document.getElementById('userSection').style.display = 'block';
+            });
+
+            // Add a click event listener to the submit button
+            submitBtn.addEventListener("click", function() {
+                // Check if all required fields are filled out
+                var areFieldsFilled = checkRequiredFields();
+
+                // If all fields are filled out, show the pop-up with "Order Confirmed" message
+                if (areFieldsFilled) {
+                    alert("Order Confirmed");
+
+                    // Ask the user if they want to go to the home page
+                    var goToHomePage = confirm("Do you want to go to the home page?");
+
+                    // If the user confirms, redirect to the home page
+                    if (goToHomePage) {
+                        window.location.href = "Home.html";
+                    }
+                } else {
+                    // If not all fields are filled out, show a pop-up with "Missing information" message
+                    alert("Missing information");
+                }
+            });
+
+            // Function to check if all required fields are filled out
+            function checkRequiredFields() {
+                // Get all form elements
+                var formElements = document.querySelectorAll("input, select");
+
+                // Loop through each form element
+                for (var i = 0; i < formElements.length; i++) {
+                    // Check if the element is required and if it is empty
+                    if (formElements[i].hasAttribute("required") && formElements[i].value.trim() === "") {
+                        // Return false if any required field is empty
+                        return false;
+                    }
+                }
+
+                // If all required fields are filled out, return true
+                return true;
+            }
+        });
+    </script>
+
+
+</div>
+
+
+
+
+
+
+<!-- Company Info -->
+<div class="container text-white bg-secondary p-4">
+    <div class="row">
+        <div class="col-md-8 col-lg-7">
+            <!-- Links for users -->
+            <div class="row">
+                <div class="col text-center">
+                    <ul class="list-unstyled">
+                        <li><a href="communityPage.html" class="text-white">Community Page</a></li>
+                        <li><a href="newsletter.html" class="text-white">Newsletter</a></li>
+                        <li><a href="contactUs.html" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-5">
+            <address>
+                <strong>Guard Gear</strong><br>
+                Hayward, CA, 94540<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+            <address>
+                <strong>Nicholas Ferreira</strong><br>
+                <a href="mailto:nferreira@horizon.csueastbay.edu" class="text-white">nferreira@horizon.csueastbay.edu</a>
+            </address>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>Copyright © Ferreira Enterprises. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

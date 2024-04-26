@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guard Gear</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/Cesar_Gracie_Academy_Logo.png" >
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="https://csweb01.csueastbay.edu/~bo5237/Project1/home.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;" role="button" aria-expanded="false">
+            <img src="images/Cesar_Gracie_Academy_Logo.png" height="50" width="50" alt="Company Logo" />
+            <h2 style="margin-left: 10px; margin-bottom: 0; margin-right: 40px; font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'">Guard Gear</h2>
+        </a>
+        <!-- Hamburger button for mobile devices to access navbar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="https://csweb01.csueastbay.edu/~bo5237/Project1/home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://csweb01.csueastbay.edu/~bo5237/Project1/shop.html">Shop All</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role = "button" data-toggle="dropdown" href="#">Categories</a>
+                    <div class="dropdown-menu" >
+
+                        <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/mensgis.html">Men's Gis</a>
+                        <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/mensrashguards.html">Men's Rashguards</a>
+                        <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/womensgis.html">Women's Gis</a>
+                        <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/womensrashguards.html">Women's Rashguards</a>
+                        <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/belts.html">Belts</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
+                <!-- Right Links -->
+                <li class="nav-item">
+                    <a class="nav-link " href="https://csweb01.csueastbay.edu/~bo5237/Project1/account.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="images/person.svg" alt = "Account" class="img-fluid" height="25" width="25">
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="https://cs351-finalproject-iug33exela-uc.a.run.app/cart" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="images/cart.svg" alt = "Shopping Cart" class="img-fluid" height="25" width="25">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- End Navbar -->
+
+<!-- Start of addToCart Main Content-->
+<div class="addToCart-section" style="margin: auto; width: 50%; padding: 10px">
+    <h1 class="underlined">Added to Cart</h1>
+<!--  Takes image src from database to call image path  -->
+    <img src=<%-JSON.stringify(imagesrc)%> class="card-img-top mb-5 mb-md-0">
+<!--  Takes the data from database to display product name  -->
+    <h1><%-JSON.stringify(data)%></h1>
+    <h2>is added to cart!<span class="text-danger">*</span></h2>
+    <button id="contShopBtn">Continue Shopping</button>
+    <button id="proceedChkOutBtn">Proceed to Checkout</button>
+</div>
+
+<!-- script for button actions -->
+<script>
+    document.getElementById('contShopBtn').addEventListener('click', function() {
+            window.location.href = "https://csweb01.csueastbay.edu/~bo5237/Project1/home.html";
+    });
+    document.getElementById('proceedChkOutBtn').addEventListener('click', function() {
+        window.location.href = '/checkOut';
+    });
+</script>
+<!-- End of Page Main Text-->
+
+<!-- Everything else other than ADDtoCART-->
+<hr>
+<div class="container text-white bg-secondary p-4">
+    <div class="row">
+        <div class="col-md-8 col-lg-7">
+            <!-- Links for users -->
+            <div class="row">
+                <div class="col text-center">
+                    <ul class="list-unstyled">
+                        <li><a href="https://csweb01.csueastbay.edu/~bo5237/Project1/communityPage.html" class="text-white">Community Page</a></li>
+                        <li><a href="https://csweb01.csueastbay.edu/~bo5237/Project1/newsletter.html" class="text-white">Newsletter</a></li>
+                        <li><a href="https://csweb01.csueastbay.edu/~bo5237/Project1/contactUs.html" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-5">
+            <address>
+                <strong>Guard Gear</strong><br>
+                Hayward, CA, 94540<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+            <address>
+                <strong>Nicholas Ferreira</strong><br>
+                <a href="mailto:nferreira@horizon.csueastbay.edu" class="text-white">nferreira@horizon.csueastbay.edu</a>
+            </address>
+        </div>
+    </div>
+</div>
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>Copyright © Ferreira Enterprises. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap-4.4.1.js"></script>
+</body>
+</html>

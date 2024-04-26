@@ -90,6 +90,7 @@
 		<!--template to edit individual products-->
 		
         <!-- Product section-->
+        <form action="https://cs351-finalproject-iug33exela-uc.a.run.app/addItemToCart" method="post">
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
@@ -97,30 +98,37 @@
 					
 					<!-- Product Information-->
                     <div class="col-md-6">
-                        <div class="small mb-1">Product ID: MR-02</div>
-                        <h1 class="display-5 fw-bolder">Men's Blue Green Rashguard</h1>
+
+                        <div class="small mb-1">
+                            <label for="id">
+                                <input value="MR-02" id="id" name="id" type="hidden">Product ID: MR-02
+                            </label>
+                        </div>
+
+                        <h1 class="display-5 fw-bolder">
+                            <label for="name">
+                                <input value="Men's Blue Green Rashguard" id="name" name="name" type="hidden">Men's Blue Green Rashguard
+                            </label>
+                        </h1>
+
 						<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star checked"></span>
 							<span class="fa fa-star-half-o checked"></span>
 							<span class="fa fa-star-o"></span>
                         <div class="fs-5 mb-5">
-                            
-                            <span>$45.99</span>
+                            <label for="id">
+                                <input value="45.99" id="price" name="price" type="hidden">$45.99
+                            </label>
                         </div>
                         <p class="lead">Experience the ultimate in comfort and mobility with our high-performance blue/green BJJ Rashguards. Engineered to keep you cool and dry, our rashguards feature moisture-wicking technology and are made from lightweight, stretchable fabric that moves with you as you roll. Their compression fit supports muscle recovery while providing exceptional durability and resistance against mat burns, making them essential for both training and competition. </p>
                         <div class="d-flex">
-							
-							<button class="btn btn-outline-secondary me-1 sub-quantity" type="button" >
-       							 <i class="bi-dash"></i>
-    						</button>
-							
-                            <input class="form-control text-center me-1" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-							<button class="btn btn-outline-secondary me-4 add-quantity" type="button" >
-        						<i class="bi-plus"></i>
-    						</button>
-							
-                            <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" type="button">
+
+                            <label for="quantity">
+                                <input class="form-control text-center me-1" id="quantity" type="number" name="quantity" value="1" style="max-width: 4rem" />
+                            </label>
+
+                            <button class="btn btn-outline-dark flex-shrink-0 add-to-cart" id="addToCartBtn" type="submit" value="Go">
                                 <i class="bi-cart-fill"></i>
                                 Add to Cart
                             </button>
