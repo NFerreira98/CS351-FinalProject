@@ -1,5 +1,4 @@
 var { uri } = require('./databaseConnection');
-
 //Define some variables needed for the database Controller functions
 const { MongoClient, ServerApiVersion } = require('mongodb');
 var Cart = require("../models/cart");
@@ -69,7 +68,6 @@ async function saveStoreOrderToMongoDB(username, password, email, productid, pro
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-
         //STEP C: connect to the database "shoppingsite"
         var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
         console.log("got shopping site");
@@ -117,7 +115,6 @@ async function saveStoreOrderToMongoDB(username, password, email, productid, pro
     }
 }
 
-
 module.exports.getOrderSummary = async function(req, res, next) {
     try {
         await client.connect();
@@ -139,8 +136,6 @@ module.exports.getOrderSummary = async function(req, res, next) {
 
         const shippingCollection = db0.collection('shipping');
         const shipping = await shippingCollection.findOne({});
-
-
         // Render the 'checkOut' view with the fetched data
         res.render('checkOut', {
             title: "Check Out",
@@ -170,13 +165,15 @@ module.exports.addItemToCart =  async function(req, res, next) {
         var value_productprice = req.body.price;
         var value_productquantity = req.body.quantity;
         var value_sessionid = req.session.id;
+        var value_productpic = req.body.pic;
         // console messages for tracking
         console.log(
             "  Session ID:  " + value_sessionid +
             "  ProductID:  " + value_productid +
             "  ProductName:  " + value_productname +
             "  ProductPrice:  " + value_productprice +
-            "  ProductQuantity:  " + value_productquantity
+            "  ProductQuantity:  " + value_productquantity +
+            "  ProductPic:  " + value_productpic
         );
         // stores current session cart or makes one if does not exist
         var cart = new Cart(req.session.cart ? req.session.cart: {});
@@ -199,7 +196,11 @@ module.exports.addItemToCart =  async function(req, res, next) {
             value_sessionid
         );
         // renders addToCart view confirming process and sends product name as data to ejs
-        res.render('addToCart', {title: "addToCart", data: value_productname});
+        res.render('addToCart', {
+            title: "addToCart",
+            data: value_productname,
+            imagesrc: value_productpic
+        });
     // error handling
     } catch (error) {
         console.error("Error fetching customer data:", error);

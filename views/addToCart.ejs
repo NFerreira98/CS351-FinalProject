@@ -7,16 +7,12 @@
     <title>Guard Gear</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-
     <link rel="icon" type="image/x-icon" href="images/Cesar_Gracie_Academy_Logo.png" >
-
 </head>
 <body>
-
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <!-- Container wrapper -->
     <div class="container-fluid">
-
         <!-- Navbar brand -->
         <a class="navbar-brand" href="https://csweb01.csueastbay.edu/~bo5237/Project1/home.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;" role="button" aria-expanded="false">
             <img src="images/Cesar_Gracie_Academy_Logo.png" height="50" width="50" alt="Company Logo" />
@@ -47,13 +43,8 @@
                         <a class="dropdown-item" href="https://csweb01.csueastbay.edu/~bo5237/Project1/belts.html">Belts</a>
                     </div>
                 </li>
-
             </ul>
-
-
-
             <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
-
                 <!-- Right Links -->
                 <li class="nav-item">
                     <a class="nav-link " href="https://csweb01.csueastbay.edu/~bo5237/Project1/account.html" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -66,10 +57,8 @@
                     <a class="nav-link " href="https://cs351-finalproject-iug33exela-uc.a.run.app/cart" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                         <img src="images/cart.svg" alt = "Shopping Cart" class="img-fluid" height="25" width="25">
                     </a>
-
                 </li>
             </ul>
-
         </div>
         <!-- Collapsible wrapper -->
     </div>
@@ -77,12 +66,11 @@
 </nav>
 <!-- End Navbar -->
 
-.
-
 <!-- Start of addToCart Main Content-->
-
 <div class="addToCart-section" style="margin: auto; width: 50%; padding: 10px">
     <h1 class="underlined">Added to Cart</h1>
+<!--  Takes image src from database to call image path  -->
+    <img src=<%-JSON.stringify(imagesrc)%> class="card-img-top mb-5 mb-md-0">
 <!--  Takes the data from database to display product name  -->
     <h1><%-JSON.stringify(data)%></h1>
     <h2>is added to cart!<span class="text-danger">*</span></h2>
@@ -95,18 +83,13 @@
     document.getElementById('contShopBtn').addEventListener('click', function() {
             window.location.href = "https://csweb01.csueastbay.edu/~bo5237/Project1/home.html";
     });
-
     document.getElementById('proceedChkOutBtn').addEventListener('click', function() {
         window.location.href = '/checkOut';
     });
 </script>
-
 <!-- End of Page Main Text-->
 
-
-
 <!-- Everything else other than ADDtoCART-->
-
 <hr>
 <div class="container text-white bg-secondary p-4">
     <div class="row">
