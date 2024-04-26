@@ -81,14 +81,14 @@
 <!-- Shopping Cart-->
 
 <form action="/shoppingCart" method="get">
-    <h2> Shopping Cart</h2>
+
     <hr>
     <table style="width: 100%">
         <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Change Quantity</th>
+            <th style="font-size: xx-large">Shopping Cart</th>
+            <th style ="font-size: small ">Price</th>
+            <th style ="font-size: small ">Quantity</th>
+            <th style ="font-size: small ">Change Quantity</th>
         </tr>
 
     <% cart.forEach((customer) => {%>
@@ -109,30 +109,17 @@
         <% }); %>
 
     </table>
-    <ul>
+
 
 
         <% cart.forEach((customer) => {%>
              <%= customer.productName%>    <%= customer.productPrice%>   <%= customer.productQuantity%> <br>
-<!--            <div class="d-flex">-->
-
-<!--                <button class="btn btn-outline-secondary me-1 sub-quantity" type="button" >-->
-<!--                    <i class="bi-dash"></i>-->
-<!--                </button>-->
-
-<!--                <input class="form-control text-center me-1" id="inputQuantity" type="num" value= 'customer.productQuantity' style="max-width: 3rem" />-->
-<!--                <button class="btn btn-outline-secondary me-4 add-quantity" type="button" >-->
-<!--                    <i class="bi-plus"></i>-->
-<!--                </button>-->
-
-
-<!--            </div>-->
 
             <% }); %>
 
 
 
-    </ul>
+
     <hr>
 
 <br>
