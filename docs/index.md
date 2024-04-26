@@ -1,11 +1,42 @@
-Intro:
-Our website titled Guard Gear is an e-commercie site that sells Brazilian Jiu-Jitsu gear. There is a home page, all products page, login and create account pages, 25 individual products, and category pages.
+# CS351 Group 3 Project 2:
 
-Database.js:
+### Introduction:
+Our website titled Guard Gear is a an e-commerce site targeted towards people who train in Brazilian Jiu-Jitsu. We sell products for people of all skill levels including gis, rashguards, and belts for. The website allows the user to create an account and add items to a cart for checkout.
+
+### Front-end Development:
+- home.html
+- shop.html
+- mensgis.html
+- womensgis.html
+- mensrashguards.html
+- womensrashguards.html
+- belts.html
+- createAccount.html
+- account.html
+  
+### Back-end Development:
+Using node.js + express in the Webstorm development environment, we implemented a back-end structure to the project including: 
+app.js: Acts as the main entry point into the application which creates an express app, handles middleware functions, and defines the routes we use.
+
+#### controllers
+- database.js: Contains the functions to add users to the database, getting an existing account from the database, and getting the contents of a user's cart.
+- databaseConnections.js: Includes our MongoDB URI for accessing the contents of the database throughout the program
+  
+#### routes
+- cart.js
+- createAccount.js
+- index.js
+- loginSuccess.js
+- users.js
+  
+#### views
+Apart from the js files that will be in charge of the logic .ejs files are also present in our
+backend in order to create the HTML for our front end, these are:
+- cart.ejs
+- error.ejs
+- index.ejs
+- loginSuccess.ejs
+- success.ejs
 
 
-Routes:
-
-
-Views:
 
