@@ -11,7 +11,70 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+module.exports.saveNewCustomer =  function(req, res, next) {
+console.log("is inside Save new customer")
+    //step 2.1 Read in the incomming form data for the customer: name, email
+    //expecting data variable called name --retrieve value using body-parser
+    var body = JSON.stringify(req.body);  //if wanted entire body as JSON
+    var params = JSON.stringify(req.params);//if wanted parameters
+    var value_username= req.body.username;  //retrieve the data associated with name
+    var value_email = req.body.email;  //retrieve the data associated with email
+    var value_password = req.body.password;  //retrieve the data associated with email
+    var value_street = req.body.street;  //retrieve the data associated with email
+    var value_city = req.body.city;  //retrieve the data associated with email
+    var value_state = req.body.state;  //retrieve the data associated with email
+    var value_zip = req.body.zip;  //retrieve the data associated with email
+    var value_phone = req.body.phone;  //retrieve the data associated with email
 
+
+   console.log("NEW Customer Data  " + value_username + "  email: " + value_email);
+    var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+    var customersCollection = db0.collection('users');
+    if (customersCollection.find({username: value_username})) {
+        res.send("You already have an account");
+        // res.redirect('https://csweb01.csueastbay.edu/~bo5237/Project1/account.html')
+    }else{
+    //step 2.2 Call the function defined below that will connect to your MongDB collection and create a new customer
+    saveCustomerToMongoDB(value_username,value_email,value_password,value_street,value_city,value_state,value_zip,value_phone);
+
+    //step 2.3 Send a response welcoming the new user
+    res.render('/success')
+    }
+    // res.send("Welcome,  " + value_username + "</br> We will reach you at: " + value_email);
+
+};
+
+async function saveCustomerToMongoDB(username,email,password,street,city,state,zip,phone) {
+    try {
+
+        //STEP A: Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ping: 1});
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+
+        //STEP D: grab the customers collection
+        var customersCollection = db0.collection('users');
+        console.log("collection is " + customersCollection.collectionName);
+        console.log(" # documents in it " + await customersCollection.countDocuments());
+
+        //STEP E: insert the new customer and display in console the new # documents in customers
+        console.log("Insert new customer");
+        await customersCollection.insertOne({"username":username,"email":email,"password":password,"street": street,"city":city,"state":state,"zip":zip,"phone":phone});
+        console.log("  # documnents now = " + await customersCollection.countDocuments());
+
+
+    } finally {
+        // STEP F: Ensures that the client will close when you finish/error
+        await client.close();
+    }
+}
 // POST request to storeOrder
 module.exports.storeOrder = function(req, res, next) {
     var body = JSON.stringify(req.body);  //if wanted entire body as JSON
