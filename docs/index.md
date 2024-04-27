@@ -19,11 +19,13 @@ Using node.js + express in the Webstorm development environment, we implemented 
 app.js: Acts as the main entry point into the application which creates an express app, handles middleware functions, and defines the routes we use.
 
 #### controllers
-- database.js: Contains the functions to add users to the database, getting an existing account from the database, and getting the contents of a user's cart.
+- database.js: Contains the functions to add users to the database, getting an existing account from the database, storing the users order, adding the cart to the database, handling checkout, and getting an order summary.
 - databaseConnections.js: Includes our MongoDB URI for accessing the contents of the database throughout the program
   
 #### routes
-- logcart.js
+- addToCart.js
+- cart.js
+- checkOut.js
 - createAccount.js
 - index.js
 - loginSuccess.js
@@ -32,11 +34,10 @@ app.js: Acts as the main entry point into the application which creates an expre
 #### views
 Apart from the js files that will be in charge of the logic .ejs files are also present in our
 backend in order to create the HTML for our front end, these are:
+-addToCart.ejs
 - cart.ejs
+- checkOut.ejs
 - error.ejs
 - index.ejs
 - loginSuccess.ejs
 - success.ejs
-
-
-
