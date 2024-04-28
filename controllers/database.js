@@ -275,3 +275,36 @@ module.exports.checkOut = async function (req, res, next) {
 
     }
 }
+
+module.exports.checkLogin = async function (req, res, next){
+    try {
+
+        // Extracting login credentials from the request body
+        var value_username= req.body.username;  //retrieve the data associated with name
+        var value_password = req.body.password;  //retrieve the data associated with email
+
+        // Connect to the MongoDB client
+        await client.connect();
+
+        // Access the 'users' collection
+        const usersCollection = client.db("shoppingsite").collection('users');
+
+        // Find the user with the provided username and password
+        const user = await usersCollection.findOne({ value_username, value_password });
+
+        if (!user) {
+            // If user is not found or password is incorrect, send a response indicating login failure
+            return res.status(400).send("Invalid username or password");
+        }
+
+        // Send a response indicating successful login
+        res.render('loginSuccess', { title: 'Login Success', user });
+    } catch (error) {
+        console.error("Error verifying login:", error);
+        res.status(500).send("Error verifying login");
+    } finally {
+        // Close the MongoDB client connection
+        await client.close();
+    }
+
+}
