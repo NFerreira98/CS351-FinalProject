@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+
 # CS351 Group 3 Project 2:
 
 ### Introduction:
