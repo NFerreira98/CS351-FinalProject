@@ -42,3 +42,6 @@ The route files we have work together with the view files of the corresponding n
 - index.ejs
 - loginSuccess.ejs
 - success.ejs
+
+#### MongoDB Database
+![image](https://github.com/NFerreira98/CS351-FinalProject/assets/142639216/a182beb3-c4a7-4446-a995-eca681f92127)
