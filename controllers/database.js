@@ -11,6 +11,132 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
+
+
+//POST request to store user in MongoDB
+module.exports.saveNewCustomer = async function(req, res, next) {
+    var value_username = req.body.username;
+    var value_email = req.body.email;
+    var value_password = req.body.password;
+    var value_street = req.body.street;
+    var value_city = req.body.city;
+    var value_state = req.body.state;
+    var value_zip = req.body.zip;
+    var value_phone = req.body.phone;
+
+    console.log("NEW Customer Data  " + value_username + "  email: " + value_email);
+
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB!");
+
+        const existingUser = await client.db("shoppingsite").collection('users').findOne({ $or: [{ username: value_username }, { email: value_email }] });
+        if (existingUser) {
+            // User already exists, render the login page
+            res.render('login'); // Assuming 'login' is the name of your login page
+            return;
+        }
+
+        // Insert the new customer
+        await client.db("shoppingsite").collection('users').insertOne({
+            "username": value_username,
+            "email": value_email,
+            "password": value_password,
+            "street": value_street,
+            "city": value_city,
+            "state": value_state,
+            "zip": value_zip,
+            "phone": value_phone
+        });
+
+        console.log("New customer inserted successfully");
+        res.render('success'); // Render success page
+    } catch(error) {
+        console.error("Could not save user to database", error);
+        res.status(500).send("Could not create new user with that info!");
+    } finally {
+        await client.close();
+    }
+};
+
+//Store user in MongoDB and check if user already exists
+async function saveCustomerToMongoDB(username,email,password,street,city,state,zip,phone) {
+    try {
+
+        //STEP A: Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ping: 1});
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+
+        //STEP D: Check if user already exists
+        const existingUser = await db0.collection('users').findOne({ $or: [{ username: username }, { email: email }] });
+        if (existingUser) {
+            render('login');
+            return; // Return to prevent further execution
+
+        }
+
+        //STEP E: grab the customers collection
+        var customersCollection = db0.collection('users');
+        console.log("collection is " + customersCollection.collectionName);
+        console.log(" # documents in it " + await customersCollection.countDocuments());
+
+        //STEP F: insert the new customer and display in console the new # documents in customers
+        console.log("Insert new customer");
+        await customersCollection.insertOne({"username":username,"email":email,"password":password,"street": street,"city":city,"state":state,"zip":zip,"phone":phone});
+        console.log("  # documnents now = " + await customersCollection.countDocuments());
+
+
+    } catch(error){
+
+        console.error("Could not save user to database", error);
+        status(500).send("Could not create new user with that info!");
+
+    } finally {
+        // STEP G: Ensures that the client will close when you finish/error
+        await client.close();
+    }
+}
+
+
+module.exports.getAccount= async function (req, res, next) {
+    try {
+
+        //STEP A: Connect the client to the server  (optional starting in v4.7)
+        await client.connect();
+        //STEP B:  Send a ping to confirm a successful connection
+        await client.db("admin").command({ping: 1});
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        //STEP C: connect to the database "shoppingsite"
+        var db0 = client.db("shoppingsite"); //client.db("shoppingsite");
+        console.log("got shopping site");
+        console.log("db0" + db0.toString());
+        //STEP D: grab the customers collection
+        var customersCollection = db0.collection('users');
+        console.log("collection is " + customersCollection.collectionName);
+        console.log(" # documents in it " + await customersCollection.countDocuments());
+        const listCursor = customersCollection.find().limit(10);
+        const loginSuccess = await listCursor.toArray();
+
+        res.render('loginSuccess', {title: 'loginSuccess', loginSuccess});
+
+    } catch (error) {
+        console.error("Error fetching customer data: ", error);
+        res.status(500).send("Error fetching customer data");
+    } finally {
+        // STEP F: Ensures that the client will close when you finish/error
+        await client.close();
+
+    }
+}
+
 // POST request to storeOrder
 module.exports.storeOrder = function(req, res, next) {
     var body = JSON.stringify(req.body);  //if wanted entire body as JSON
